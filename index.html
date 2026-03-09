@@ -1,0 +1,2143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Business Growth Analysis — Atlas Growth AI</title>
+<meta name="description" content="Find out exactly where your service business is leaking revenue. Free AI-powered analysis in under 5 minutes. No obligation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ═══ RESET + VARS ═══ */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#06080d;--bg2:#090c14;--bg3:#0c101a;
+  --c1:#111520;--c2:#161c2b;--c3:#1c2338;--c4:#212a42;
+  --b1:rgba(255,255,255,.05);--b2:rgba(255,255,255,.09);--b3:rgba(255,255,255,.16);--b4:rgba(255,255,255,.24);
+  --blue:#1a46c4;--blue2:#2563eb;--blue3:#3b82f6;--blue4:#60a5fa;--blue5:#93c5fd;
+  --gold:#b45309;--gold2:#d97706;--gold3:#f59e0b;--gold4:#fbbf24;
+  --green:#047857;--green2:#059669;--green3:#10b981;--green4:#34d399;
+  --red:#b91c1c;--red2:#dc2626;--red3:#ef4444;
+  --t1:#f0f4ff;--t2:#c7d2fe;--t3:#818cf8;--t4:#4b5a8b;--t5:#2d3a5e;
+  --f1:'Bricolage Grotesque',sans-serif;
+  --f2:'DM Serif Display',serif;
+  --f3:'JetBrains Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--t1);font-family:var(--f1);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+button,input,select,textarea{font-family:var(--f1);outline:none}
+a{text-decoration:none;color:inherit}
+::selection{background:rgba(37,99,235,.3)}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-thumb{background:var(--blue2)}
+
+/* ═══ AMBIENT ═══ */
+#bg-wrap{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+#bg-wrap::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(37,99,235,.013) 1px,transparent 1px),linear-gradient(90deg,rgba(37,99,235,.013) 1px,transparent 1px);background-size:64px 64px}
+.orb{position:absolute;border-radius:50%;filter:blur(90px)}
+#o1{width:700px;height:700px;top:-250px;left:-200px;background:radial-gradient(circle,rgba(29,78,216,.11),transparent 70%)}
+#o2{width:500px;height:500px;bottom:-150px;right:-150px;background:radial-gradient(circle,rgba(180,83,9,.07),transparent 70%)}
+#o3{width:450px;height:450px;top:45%;left:55%;background:radial-gradient(circle,rgba(99,102,241,.06),transparent 70%);animation:orbf 9s ease-in-out infinite}
+@keyframes orbf{0%,100%{transform:translate(0,0)}50%{transform:translate(-28px,-36px)}}
+
+/* ═══ KEYFRAMES ═══ */
+@keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(16,185,129,.6)}55%{box-shadow:0 0 0 9px rgba(16,185,129,0)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes callRing{0%{opacity:.8;transform:scale(.85)}100%{opacity:0;transform:scale(1.5)}}
+@keyframes slideUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes bounce{0%,80%,100%{transform:translateY(0)}40%{transform:translateY(-7px)}}
+@keyframes typewriter{from{width:0}to{width:100%}}
+@keyframes barGrow{from{width:0}to{width:var(--w)}}
+@keyframes countUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* ═══ LAYOUT ═══ */
+.z1{position:relative;z-index:1}
+.w{max-width:1020px;margin:0 auto;padding:0 28px}
+.w-sm{max-width:780px;margin:0 auto;padding:0 28px}
+.w-lg{max-width:1200px;margin:0 auto;padding:0 28px}
+section{position:relative;z-index:1}
+
+/* ═══ NAV ═══ */
+#nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:62px;background:rgba(6,8,13,.92);backdrop-filter:blur(30px);border-bottom:1px solid var(--b1);display:flex;align-items:center;justify-content:space-between;padding:0 32px}
+.nav-logo{display:flex;align-items:center;gap:10px;cursor:pointer}
+.nav-mark{width:30px;height:30px;background:var(--blue2);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:11px;color:#fff;clip-path:polygon(0 0,100% 0,100% 70%,70% 100%,0 100%)}
+.nav-name{font-size:14px;font-weight:800;letter-spacing:-.03em}
+.nav-name span{color:var(--blue4)}
+.nav-r{display:flex;align-items:center;gap:12px}
+.nav-links{display:flex;gap:4px}
+.nav-link{font-size:11px;font-weight:600;color:var(--t4);padding:6px 12px;cursor:pointer;transition:color .15s;text-transform:uppercase;letter-spacing:.06em}
+.nav-link:hover{color:var(--t2)}
+.nav-pill{font-size:10px;color:var(--t4);padding:5px 12px;border:1px solid var(--b1);font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.nav-btn{font-size:12px;font-weight:800;padding:9px 20px;background:var(--blue2);color:#fff;border:none;cursor:pointer;letter-spacing:.02em;transition:background .2s}
+.nav-btn:hover{background:var(--blue3)}
+@media(max-width:640px){.nav-pill,.nav-links{display:none}}
+
+/* ═══ HERO ═══ */
+#hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:100px 24px 80px}
+.hero-inner{max-width:900px}
+.hero-badge{display:inline-flex;align-items:center;gap:9px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--t4);border:1px solid var(--b2);padding:8px 18px;margin-bottom:36px;opacity:0;animation:rise .7s .1s ease forwards}
+.hbp{width:8px;height:8px;background:var(--green3);border-radius:50%;animation:pulse 2.8s ease-in-out infinite}
+.hero-h{font-size:clamp(40px,8.5vw,96px);font-weight:900;line-height:.96;letter-spacing:-.06em;margin-bottom:28px;opacity:0;animation:rise .85s .2s ease forwards}
+.hero-h em{font-family:var(--f2);font-style:italic;font-weight:400;color:var(--blue4)}
+.hero-h .shine{background:linear-gradient(135deg,var(--gold3),var(--gold4) 40%,var(--gold3));background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 3.5s linear infinite}
+.hero-p{font-size:18px;color:var(--t2);line-height:1.9;max-width:600px;margin:0 auto 50px;opacity:0;animation:rise .85s .3s ease forwards}
+.hero-p strong{color:var(--t1);font-weight:700}
+.hero-btns{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;opacity:0;animation:rise .85s .42s ease forwards}
+.btn-primary{display:inline-flex;align-items:center;gap:11px;font-size:16px;font-weight:800;padding:18px 40px;background:var(--blue2);color:#fff;border:none;cursor:pointer;clip-path:polygon(0 0,100% 0,100% 78%,96% 100%,0 100%);transition:all .22s;letter-spacing:.01em}
+.btn-primary:hover{background:var(--blue3);transform:translateY(-3px);box-shadow:0 24px 72px rgba(37,99,235,.38)}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;padding:17px 30px;border:1px solid var(--b2);color:var(--t2);background:none;cursor:pointer;transition:all .2s}
+.btn-ghost:hover{border-color:var(--b3);color:var(--t1)}
+.hero-proof{display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap;margin-top:64px;padding-top:44px;border-top:1px solid var(--b1);opacity:0;animation:rise .85s .55s ease forwards}
+.hp{text-align:center}.hp-n{font-size:30px;font-weight:900;letter-spacing:-.05em;color:var(--blue4)}.hp-l{font-size:11px;color:var(--t4);font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-top:3px}.hp-div{width:1px;height:38px;background:var(--b2)}
+
+/* ═══ TICKER ═══ */
+.ticker-outer{overflow:hidden;background:var(--c1);border-top:1px solid var(--b1);border-bottom:1px solid var(--b1);padding:12px 0;position:relative;z-index:1}
+.ticker-inner{display:flex;width:max-content;animation:tick 28s linear infinite}
+.ticker-inner:hover{animation-play-state:paused}
+.ti{display:flex;align-items:center;gap:7px;padding:0 34px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--t4);white-space:nowrap}
+.ti .d{width:4px;height:4px;background:var(--blue3);border-radius:50%}
+.ti.hi{color:var(--gold3)}
+
+/* ═══ SECTION HELPERS ═══ */
+.s-eye{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--t4);margin-bottom:10px}
+.s-h{font-size:clamp(28px,4.5vw,50px);font-weight:900;letter-spacing:-.045em;line-height:1.04;margin-bottom:16px}
+.s-h em{font-family:var(--f2);font-style:italic;font-weight:400;color:var(--blue4)}
+.s-p{font-size:15px;color:var(--t3);line-height:1.85;max-width:540px}
+
+/* ═══ CALCULATOR ═══ */
+#calculator{padding:110px 0}
+.calc-shell{background:var(--c1);border:1px solid var(--b2);padding:48px;margin-top:52px}
+@media(max-width:600px){.calc-shell{padding:28px 22px}}
+.calc-header{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:40px}
+.calc-h3{font-size:20px;font-weight:800;letter-spacing:-.03em;margin-bottom:6px}
+.calc-sub{font-size:13px;color:var(--t4);line-height:1.7}
+.live-badge{display:inline-flex;align-items:center;gap:7px;flex-shrink:0;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:rgba(16,185,129,.07);border:1px solid rgba(16,185,129,.22);color:var(--green3);padding:7px 14px}
+.lb-dot{width:7px;height:7px;background:var(--green3);border-radius:50%;animation:pulse 2.5s ease-in-out infinite}
+.sliders-g{display:grid;grid-template-columns:1fr 1fr;gap:36px;margin-bottom:40px}
+@media(max-width:640px){.sliders-g{grid-template-columns:1fr}}
+.sl-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--t4);display:flex;justify-content:space-between;align-items:center;margin-bottom:13px}
+.sl-v{font-size:17px;font-weight:900;color:var(--t1);letter-spacing:-.02em;font-family:var(--f3)}
+input[type=range]{-webkit-appearance:none;width:100%;height:3px;background:var(--c3);border-radius:2px;outline:none;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;background:var(--blue2);border-radius:50%;cursor:pointer;box-shadow:0 0 0 5px rgba(37,99,235,.2);transition:box-shadow .15s}
+input[type=range]::-webkit-slider-thumb:hover{box-shadow:0 0 0 9px rgba(37,99,235,.28)}
+.res-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:28px}
+@media(max-width:580px){.res-3{grid-template-columns:1fr}}
+.rbox{background:var(--bg3);border:1px solid var(--b1);padding:24px;text-align:center;position:relative;overflow:hidden}
+.rbox::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px}
+.rbox.r::after{background:var(--red3)}.rbox.g::after{background:var(--green3)}.rbox.a::after{background:var(--gold3)}
+.rbox-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--t4);margin-bottom:8px}
+.rbox-num{font-size:32px;font-weight:900;letter-spacing:-.05em;transition:all .3s;font-family:var(--f3)}
+.rbox-num.r{color:var(--red3)}.rbox-num.g{color:var(--green3)}.rbox-num.a{color:var(--gold3)}
+.rbox-sub{font-size:11px;color:var(--t5);margin-top:4px}
+.ai-insight-row{display:flex;align-items:flex-start;gap:16px;background:rgba(37,99,235,.05);border:1px solid rgba(37,99,235,.16);padding:22px 26px}
+.ai-orb{width:36px;height:36px;background:rgba(37,99,235,.14);border:1px solid rgba(37,99,235,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.ai-text-body{font-size:13px;color:var(--t2);line-height:1.82}
+.ai-text-body strong{color:var(--blue4);font-weight:700}
+
+/* ═══ LEAKS ═══ */
+#leaks{padding:110px 0;background:linear-gradient(180deg,transparent,rgba(17,21,32,.4) 50%,transparent)}
+.leaks-g{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:52px}
+@media(max-width:760px){.leaks-g{grid-template-columns:1fr 1fr}}
+@media(max-width:460px){.leaks-g{grid-template-columns:1fr}}
+.lk{background:var(--c1);border:1px solid var(--b1);padding:28px;transition:all .25s;position:relative;overflow:hidden}
+.lk::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--red2),var(--gold2));opacity:0;transition:opacity .3s}
+.lk:hover{border-color:var(--b2);transform:translateY(-5px);box-shadow:0 24px 60px rgba(0,0,0,.5)}
+.lk:hover::before{opacity:1}
+.lk-idx{font-size:11px;font-weight:700;font-family:var(--f3);color:var(--t5);margin-bottom:14px}
+.lk-ico{font-size:28px;margin-bottom:12px;display:block}
+.lk-title{font-size:15px;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
+.lk-desc{font-size:12px;color:var(--t4);line-height:1.78}
+.lk-loss{margin-top:14px;font-size:11px;font-weight:700;color:var(--red3);background:rgba(220,38,38,.08);border:1px solid rgba(220,38,38,.14);padding:5px 10px;display:inline-block}
+
+/* ═══ ASSESSMENT ═══ */
+#assessment{padding:110px 0}
+.assess-wrap{max-width:780px;margin:0 auto;padding:0 24px}
+.prog-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.prog-txt{font-size:11px;color:var(--t4);font-weight:700;letter-spacing:.06em}
+.prog-pct{font-size:12px;color:var(--blue4);font-weight:900;font-family:var(--f3)}
+.prog-track{height:2px;background:var(--b1);margin-bottom:52px;overflow:hidden}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--blue2),var(--blue4));transition:width .5s ease}
+.fstep{display:none;animation:rise .4s ease both}
+.fstep.on{display:block}
+.fs-eye{font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--blue3);margin-bottom:10px}
+.fs-q{font-size:clamp(20px,3.2vw,30px);font-weight:900;letter-spacing:-.03em;line-height:1.12;margin-bottom:9px}
+.fs-q em{font-family:var(--f2);font-style:italic;font-weight:400;color:var(--blue4)}
+.fs-hint{font-size:13px;color:var(--t4);margin-bottom:30px;line-height:1.75}
+.opts{display:grid;gap:10px}
+.opts.g2{grid-template-columns:1fr 1fr}
+.opts.g3{grid-template-columns:1fr 1fr 1fr}
+@media(max-width:580px){.opts.g2,.opts.g3{grid-template-columns:1fr}}
+.opt{display:flex;align-items:flex-start;gap:14px;background:var(--c1);border:2px solid var(--b1);padding:16px 20px;cursor:pointer;transition:all .18s;text-align:left;position:relative;overflow:hidden}
+.opt::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--blue2);transform:scaleY(0);transition:transform .2s ease;transform-origin:center}
+.opt:hover{border-color:var(--b2);background:var(--c2)}
+.opt.sel{border-color:var(--blue2);background:rgba(37,99,235,.06)}
+.opt.sel::before{transform:scaleY(1)}
+.opt-radio{width:18px;height:18px;border:2px solid var(--b2);border-radius:50%;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.opt.sel .opt-radio{border-color:var(--blue2);background:var(--blue2)}
+.opt.sel .opt-radio::after{content:'';width:6px;height:6px;background:#fff;border-radius:50%}
+.opt-body{flex:1}
+.opt-main{font-size:14px;font-weight:700;color:var(--t1);line-height:1.3}
+.opt-sub{font-size:12px;color:var(--t4);margin-top:4px;line-height:1.55}
+.opt-tag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;padding:3px 8px;margin-top:8px;display:inline-block}
+.tag-r{background:rgba(220,38,38,.1);color:var(--red3)}.tag-g{background:rgba(16,185,129,.1);color:var(--green3)}.tag-a{background:rgba(245,158,11,.1);color:var(--gold3)}
+.scale-wrap{margin-top:4px}
+.scale-row{display:flex;gap:6px}
+.s-btn{flex:1;padding:14px 4px;background:var(--c1);border:2px solid var(--b1);font-size:15px;font-weight:800;color:var(--t4);cursor:pointer;transition:all .15s;text-align:center}
+.s-btn:hover{border-color:var(--b2);color:var(--t1)}
+.s-btn.sel{border-color:var(--blue2);background:rgba(37,99,235,.08);color:var(--blue4)}
+.scale-leg{display:flex;justify-content:space-between;font-size:10px;color:var(--t5);margin-top:7px}
+.fi-wrap input,.fi-wrap select{width:100%;padding:15px 18px;background:var(--c1);border:1px solid var(--b2);color:var(--t1);font-size:15px;font-weight:500;transition:border-color .2s}
+.fi-wrap input:focus,.fi-wrap select:focus{border-color:var(--blue2)}
+.fi-wrap select{cursor:pointer;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%234b5a8b' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;padding-right:42px}
+.fi-wrap select option{background:var(--c1)}
+.fi-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:520px){.fi-2{grid-template-columns:1fr}}
+.step-nav{display:flex;justify-content:space-between;align-items:center;margin-top:38px;padding-top:28px;border-top:1px solid var(--b1)}
+.btn-back{font-size:13px;font-weight:700;color:var(--t4);background:none;border:none;cursor:pointer;padding:0;transition:color .15s;display:flex;align-items:center;gap:6px}
+.btn-back:hover{color:var(--t1)}
+.btn-next{display:inline-flex;align-items:center;gap:9px;font-size:14px;font-weight:800;padding:14px 32px;background:var(--blue2);color:#fff;border:none;cursor:pointer;transition:all .2s}
+.btn-next:hover:not(:disabled){background:var(--blue3);transform:translateY(-1px)}
+.btn-next:disabled{background:var(--c3);color:var(--t5);cursor:not-allowed;transform:none}
+.step-info{font-size:12px;color:var(--t5);font-weight:500;font-family:var(--f3)}
+
+/* ═══ DEMOS ═══ */
+#demos{padding:110px 0}
+.demos-intro{text-align:center;max-width:680px;margin:0 auto 56px}
+.demo-tabs{display:flex;gap:0;flex-wrap:wrap;margin-bottom:48px;border:1px solid var(--b2);overflow:hidden}
+.dtab{flex:1;min-width:90px;padding:14px 8px;text-align:center;font-size:11px;font-weight:700;color:var(--t4);cursor:pointer;background:var(--c1);border-right:1px solid var(--b1);transition:all .18s;letter-spacing:.02em}
+.dtab:last-child{border-right:none}
+.dtab:hover{color:var(--t2);background:var(--c2)}
+.dtab.on{background:rgba(37,99,235,.09);border-bottom:2px solid var(--blue2);color:var(--blue4)}
+.dtab span{display:block;font-size:18px;margin-bottom:4px}
+@media(max-width:760px){.dtab{min-width:70px;padding:10px 5px;font-size:10px}.dtab span{font-size:14px}}
+@media(max-width:480px){.dtab{min-width:50px;padding:8px 3px;font-size:9px}.dtab span{font-size:12px}}
+.dpanel{display:none;animation:rise .35s ease both}
+.dpanel.on{display:block}
+.demo-2col{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+@media(max-width:740px){.demo-2col{grid-template-columns:1fr}}
+.demo-info h3{font-size:22px;font-weight:800;letter-spacing:-.035em;margin-bottom:12px}
+.demo-info>p{font-size:13px;color:var(--t3);line-height:1.82;margin-bottom:20px}
+.feat-list{display:flex;flex-direction:column;gap:9px}
+.feat{display:flex;align-items:flex-start;gap:12px;padding:13px 16px;background:var(--c1);border:1px solid var(--b1)}
+.feat-ico{font-size:16px;flex-shrink:0;margin-top:1px}
+.feat strong{display:block;font-size:12px;font-weight:700;color:var(--t1);margin-bottom:2px}
+.feat span{font-size:12px;color:var(--t4);line-height:1.55}
+.ai-powered-badge{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:rgba(37,99,235,.08);border:1px solid rgba(37,99,235,.2);color:var(--blue4);padding:5px 11px;margin-bottom:16px}
+
+/* CHAT DEMO */
+.chat-win{background:var(--c1);border:1px solid var(--b2);display:flex;flex-direction:column;height:520px;overflow:hidden}
+.cw-head{padding:16px 20px;background:var(--c2);border-bottom:1px solid var(--b1);display:flex;align-items:center;gap:12px}
+.cw-av{width:36px;height:36px;background:var(--blue2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;color:#fff}
+.cw-n{font-size:13px;font-weight:700;margin-bottom:2px}
+.cw-st{font-size:11px;color:var(--green3);display:flex;align-items:center;gap:5px}
+.cw-st::before{content:'';width:6px;height:6px;background:var(--green3);border-radius:50%}
+.cw-msgs{flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:14px}
+.cw-msgs::-webkit-scrollbar{width:2px}
+.mrow{display:flex;gap:9px;align-items:flex-end}
+.mrow.u{flex-direction:row-reverse;align-self:flex-end}
+.mav{width:26px;height:26px;border-radius:50%;background:var(--c3);display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0}
+.mbub{padding:11px 15px;font-size:13px;line-height:1.65;max-width:290px}
+.mrow.b .mbub{background:var(--c2);border:1px solid var(--b1);color:var(--t2);border-radius:0 10px 10px 10px}
+.mrow.u .mbub{background:var(--blue2);color:#fff;border-radius:10px 10px 0 10px}
+.typing-ind{display:flex;gap:5px;padding:12px 16px;background:var(--c2);border:1px solid var(--b1);align-self:flex-start;border-radius:0 10px 10px 10px;width:fit-content}
+.td{width:7px;height:7px;background:var(--t4);border-radius:50%;animation:bounce 1.2s ease-in-out infinite}
+.td:nth-child(2){animation-delay:.2s}.td:nth-child(3){animation-delay:.4s}
+.cw-in-row{padding:14px 16px;border-top:1px solid var(--b1);display:flex;gap:10px;align-items:flex-end}
+.cw-in{flex:1;background:var(--bg3);border:1px solid var(--b2);padding:11px 14px;color:var(--t1);font-size:13px;resize:none;line-height:1.5;max-height:100px;transition:border-color .2s}
+.cw-in:focus{border-color:var(--blue2)}
+.cw-send{width:40px;height:40px;background:var(--blue2);border:none;cursor:pointer;color:#fff;font-size:16px;display:flex;align-items:center;justify-content:center;transition:background .15s;flex-shrink:0}
+.cw-send:hover{background:var(--blue3)}
+.cw-sugs{padding:10px 16px;border-top:1px solid var(--b1);display:flex;gap:6px;flex-wrap:wrap}
+.cw-sug{font-size:11px;font-weight:600;padding:5px 10px;background:var(--c2);border:1px solid var(--b1);color:var(--t3);cursor:pointer;transition:all .15s}
+.cw-sug:hover{border-color:var(--blue2);color:var(--blue4)}
+
+/* PHONE DEMO */
+.phone-wrap{display:grid;grid-template-columns:190px 1fr;gap:20px;align-items:start}
+@media(max-width:520px){.phone-wrap{grid-template-columns:1fr}}
+.phone-vis{width:190px;background:var(--c2);border:2px solid var(--b2);display:flex;flex-direction:column;overflow:hidden;min-height:360px}
+.ph-notch{height:24px;background:var(--bg);margin:0 auto;width:80px;border-radius:0 0 14px 14px;flex-shrink:0}
+.ph-screen{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;gap:12px}
+.ph-av{width:66px;height:66px;background:var(--blue2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:900;color:#fff;position:relative}
+.ph-ring{position:absolute;border:2px solid rgba(37,99,235,.3);border-radius:50%;animation:callRing 2s ease-out infinite}
+.ph-ring:nth-child(2){width:88px;height:88px}.ph-ring:nth-child(3){width:112px;height:112px;animation-delay:.4s}
+.ph-name{font-size:12px;font-weight:800;color:var(--t1);text-align:center}
+.ph-st{font-size:11px;color:var(--green3);font-weight:600}
+.ph-timer{font-size:18px;font-weight:900;font-family:var(--f3);color:var(--t2)}
+.ph-acts{display:flex;gap:12px}
+.ph-btn{width:44px;height:44px;border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:18px;transition:opacity .2s}
+.ph-btn:hover{opacity:.85}
+.ph-btn.red{background:var(--red2)}.ph-btn.green{background:var(--green2)}
+.transcript-box{background:var(--c1);border:1px solid var(--b2);padding:22px;max-height:360px;overflow-y:auto}
+.tb-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.tb-title{font-size:12px;font-weight:800;color:var(--t3);text-transform:uppercase;letter-spacing:.08em}
+.tb-live-badge{font-size:10px;font-weight:700;color:var(--green3);background:rgba(16,185,129,.1);padding:3px 8px}
+.tl-line{display:flex;gap:10px;margin-bottom:14px;font-size:12px;line-height:1.7}
+.tl-who{font-weight:800;flex-shrink:0;min-width:58px}
+.tl-who.ai{color:var(--blue4)}.tl-who.c{color:var(--gold3)}
+.tl-msg{color:var(--t3)}
+
+/* BOOKING DEMO */
+.book-split{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:600px){.book-split{grid-template-columns:1fr}}
+.cal-box{background:var(--c1);border:1px solid var(--b2);padding:24px}
+.cal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+.cal-month{font-size:15px;font-weight:800;letter-spacing:-.02em}
+.cal-navs{display:flex;gap:6px}
+.cal-nav{width:28px;height:28px;background:var(--c2);border:1px solid var(--b1);color:var(--t1);cursor:pointer;font-size:13px;display:flex;align-items:center;justify-content:center;transition:border-color .15s}
+.cal-nav:hover{border-color:var(--b3)}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.cal-dow{font-size:10px;font-weight:700;text-align:center;color:var(--t4);padding:6px 0;text-transform:uppercase;letter-spacing:.05em}
+.cal-day{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;cursor:pointer;transition:all .15s;border:1px solid transparent}
+.cal-day.av:hover{background:rgba(37,99,235,.1);border-color:var(--blue2);color:var(--blue4)}
+.cal-day.sel{background:var(--blue2);color:#fff}
+.cal-day.tk{color:var(--t5);cursor:default;text-decoration:line-through}
+.cal-day.e{cursor:default}
+.slots-box{background:var(--c1);border:1px solid var(--b2);padding:24px}
+.slots-lbl{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--t4);margin-bottom:14px}
+.slots-g{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px}
+.slot{padding:11px;background:var(--c2);border:1px solid var(--b1);font-size:12px;font-weight:700;color:var(--t3);cursor:pointer;text-align:center;transition:all .15s}
+.slot:hover:not(.tk){border-color:var(--blue2);color:var(--blue4);background:rgba(37,99,235,.06)}
+.slot.sel{border-color:var(--blue2);background:rgba(37,99,235,.1);color:var(--blue4)}
+.slot.tk{color:var(--t5);cursor:not-allowed;opacity:.4}
+.book-btn{width:100%;padding:14px;background:var(--blue2);color:#fff;border:none;font-size:14px;font-weight:800;cursor:pointer;transition:background .2s}
+.book-btn:hover{background:var(--blue3)}
+.book-conf{display:none;text-align:center;padding:28px;background:rgba(16,185,129,.04);border:1px solid rgba(16,185,129,.18)}
+.book-conf.show{display:block}
+.bc-ico{font-size:36px;margin-bottom:10px}
+.bc-title{font-size:18px;font-weight:800;letter-spacing:-.03em;color:var(--green3);margin-bottom:8px}
+.bc-desc{font-size:13px;color:var(--t3);line-height:1.75}
+
+/* FOLLOW-UP DEMO */
+.fu-split{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:640px){.fu-split{grid-template-columns:1fr}}
+.fu-timeline-box{background:var(--c1);border:1px solid var(--b2);padding:28px}
+.fut-title{font-size:14px;font-weight:800;letter-spacing:-.02em;margin-bottom:22px}
+.timeline{position:relative;padding-left:22px}
+.timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:1px;background:var(--b2)}
+.tl-item{position:relative;margin-bottom:22px;padding-left:22px}
+.tl-dot{position:absolute;left:-30px;top:0;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;background:var(--c3);border:1px solid var(--b2)}
+.tl-item.done .tl-dot{background:var(--green2);border-color:var(--green3);color:#fff;font-size:9px}
+.tl-item.active .tl-dot{background:var(--blue2);border-color:var(--blue3);animation:pulse 2s ease-in-out infinite}
+.tl-time{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--t5);margin-bottom:4px;font-family:var(--f3)}
+.tl-label{font-size:13px;font-weight:700;color:var(--t1);margin-bottom:6px}
+.tl-prev{font-size:12px;color:var(--t4);line-height:1.65;font-style:italic}
+.tl-badge{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:2px 7px;margin-top:6px;display:inline-block}
+.tl-badge.d{background:rgba(16,185,129,.1);color:var(--green3)}
+.tl-badge.a{background:rgba(37,99,235,.1);color:var(--blue4)}
+.tl-badge.p{background:rgba(75,90,139,.12);color:var(--t3)}
+.fu-preview-box{background:var(--c1);border:1px solid var(--b2);padding:24px}
+.fup-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--t4);margin-bottom:14px}
+.sms-phone{background:var(--bg3);border:1px solid var(--b1);border-radius:12px;padding:20px;margin-bottom:16px;min-height:120px}
+.sms-bubble{background:var(--c2);border-radius:0 12px 12px 12px;padding:12px 14px;font-size:13px;color:var(--t2);line-height:1.65}
+.fu-btns{display:flex;gap:8px;flex-wrap:wrap}
+.fu-tab{font-size:11px;font-weight:700;padding:7px 14px;background:var(--c2);border:1px solid var(--b1);color:var(--t4);cursor:pointer;transition:all .15s;text-align:center}
+.fu-tab:hover{border-color:var(--blue2);color:var(--blue4)}
+.fu-tab.on{background:rgba(37,99,235,.1);border-color:var(--blue2);color:var(--blue4)}
+
+/* REVIEW DEMO */
+.review-demo-split{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:640px){.review-demo-split{grid-template-columns:1fr}}
+.rev-flow-box{background:var(--c1);border:1px solid var(--b2);padding:28px}
+.rev-stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:24px}
+.rev-stat{text-align:center;padding:16px;background:var(--bg3);border:1px solid var(--b1)}
+.rev-stat-n{font-size:24px;font-weight:900;letter-spacing:-.04em;font-family:var(--f3);color:var(--green4)}
+.rev-stat-l{font-size:10px;color:var(--t4);font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-top:3px}
+.rev-list{display:flex;flex-direction:column;gap:10px}
+.rev-card{padding:14px;background:var(--bg3);border:1px solid var(--b1);position:relative;overflow:hidden}
+.rev-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px}
+.rev-card.pub::before{background:var(--green3)}
+.rev-card.priv::before{background:var(--gold3)}
+.rev-stars{font-size:12px;margin-bottom:4px}
+.rev-text{font-size:12px;color:var(--t3);line-height:1.6;margin-bottom:6px}
+.rev-meta{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.rev-name{font-size:11px;font-weight:700;color:var(--t4)}
+.rev-tag{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;padding:2px 7px}
+.rev-tag.pub{background:rgba(16,185,129,.1);color:var(--green3)}
+.rev-tag.priv{background:rgba(245,158,11,.1);color:var(--gold3)}
+.rev-interactive{background:var(--c1);border:1px solid var(--b2);padding:24px}
+.ri-title{font-size:14px;font-weight:700;margin-bottom:16px}
+.rscr{display:none}.rscr.on{display:block;animation:rise .3s ease both}
+.rev-stars-row{display:flex;gap:8px;justify-content:center;margin:20px 0;cursor:pointer}
+.star{font-size:32px;transition:all .15s;filter:grayscale(1) opacity(.4)}
+.star.lit{filter:none}
+.rev-steps-bar{display:flex;gap:0;margin-bottom:16px}
+.rfs{height:3px;flex:1;background:var(--b1);transition:background .3s}
+.rfs.done{background:var(--green3)}.rfs.active{background:var(--blue2)}
+
+/* SOCIAL DM DEMO */
+.soc-shell{display:grid;grid-template-columns:180px 1fr;gap:0;background:var(--c1);border:1px solid var(--b2);min-height:380px}
+@media(max-width:580px){.soc-shell{grid-template-columns:1fr;min-height:auto}}
+.soc-threads{border-right:1px solid var(--b1);overflow:hidden}
+.soc-thread-head{padding:12px 14px;border-bottom:1px solid var(--b1);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--t5)}
+.dm-thread{display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid var(--b1);cursor:pointer;transition:background .15s}
+.dm-thread:hover{background:var(--c2)}
+.dm-thread.active{background:rgba(37,99,235,.08)}
+.dm-av{width:30px;height:30px;background:var(--c3);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0}
+.dm-info{flex:1;min-width:0}
+.dm-name{font-size:12px;font-weight:700;color:var(--t1)}
+.dm-prev{font-size:11px;color:var(--t4);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dm-time{font-size:10px;color:var(--t5)}
+.soc-chat{display:flex;flex-direction:column;flex:1}
+.soc-chat-head{padding:12px 16px;border-bottom:1px solid var(--b1);display:flex;align-items:center;gap:10px}
+.soc-chat-name{font-size:13px;font-weight:700}
+.soc-chat-st{font-size:11px;color:var(--green3)}
+.sc-msgs{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;min-height:220px}
+.sc-msg{max-width:240px;padding:10px 13px;font-size:13px;line-height:1.6}
+.sc-msg.in{background:var(--c2);border:1px solid var(--b1);border-radius:0 10px 10px 10px;color:var(--t2)}
+.sc-msg.out{background:var(--blue2);border-radius:10px 10px 0 10px;color:#fff;align-self:flex-end}
+.sc-auto-note{font-size:10px;font-weight:700;color:var(--green3);text-transform:uppercase;letter-spacing:.08em;text-align:center;padding:4px 0}
+.soc-btns{padding:12px 16px;border-top:1px solid var(--b1);display:flex;gap:8px;flex-wrap:wrap}
+.soc-btn{font-size:11px;font-weight:700;padding:6px 12px;background:var(--c2);border:1px solid var(--b1);color:var(--t3);cursor:pointer;transition:all .15s}
+.soc-btn:hover{border-color:var(--blue2);color:var(--blue4)}
+
+/* CRM DEMO */
+.crm-board{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
+@media(max-width:700px){.crm-board{grid-template-columns:1fr 1fr}}
+@media(max-width:420px){.crm-board{grid-template-columns:1fr}}
+.crm-col{background:var(--c1);border:1px solid var(--b1);overflow:hidden}
+.crm-col-head{padding:12px 14px;border-bottom:1px solid var(--b1);display:flex;align-items:center;justify-content:space-between}
+.crm-col-name{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--t4)}
+.crm-col-ct{font-size:11px;font-weight:900;font-family:var(--f3);color:var(--t3);background:var(--c3);padding:2px 7px}
+.crm-cards{padding:10px;display:flex;flex-direction:column;gap:7px}
+.crm-card{background:var(--bg3);border:1px solid var(--b1);padding:12px;cursor:pointer;transition:all .15s}
+.crm-card:hover{border-color:var(--b2);transform:translateY(-2px)}
+.crm-card-name{font-size:12px;font-weight:700;color:var(--t1);margin-bottom:3px}
+.crm-card-niche{font-size:11px;color:var(--t4)}
+.crm-card-val{font-size:11px;font-weight:700;color:var(--green3);margin-top:5px}
+.crm-card-src{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:2px 6px;margin-top:4px;display:inline-block;background:rgba(37,99,235,.08);color:var(--blue4)}
+.crm-stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+@media(max-width:640px){.crm-stats-row{grid-template-columns:1fr 1fr}}
+.crm-stat{background:var(--bg3);border:1px solid var(--b1);padding:16px;text-align:center}
+.crm-stat-n{font-size:20px;font-weight:900;font-family:var(--f3);letter-spacing:-.03em;color:var(--blue4)}
+.crm-stat-l{font-size:10px;color:var(--t4);font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-top:3px}
+
+/* WEBSITE DEMO */
+.website-compare{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:580px){.website-compare{grid-template-columns:1fr}}
+.ws-card{border:1px solid var(--b2);overflow:hidden}
+.ws-label{padding:10px 14px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;display:flex;align-items:center;gap:8px}
+.ws-label.bad{background:rgba(220,38,38,.08);color:var(--red3);border-bottom:1px solid rgba(220,38,38,.15)}
+.ws-label.good{background:rgba(16,185,129,.08);color:var(--green3);border-bottom:1px solid rgba(16,185,129,.15)}
+.ws-mock{padding:18px;background:var(--bg3);min-height:240px}
+.ws-mock-header{height:36px;background:var(--c3);margin-bottom:12px;display:flex;align-items:center;padding:0 12px;gap:8px}
+.ws-mock-dot{width:8px;height:8px;border-radius:50%}
+.ws-mock-bar{height:20px;background:var(--b2);flex:1;margin-left:8px}
+.ws-mock-body{display:flex;flex-direction:column;gap:8px}
+.ws-mock-hero{height:80px;background:var(--c3);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--t5);font-weight:600}
+.ws-mock-hero.good-hero{background:linear-gradient(135deg,rgba(37,99,235,.2),rgba(29,78,216,.1));border:1px solid rgba(37,99,235,.15);font-size:12px;color:var(--blue4)}
+.ws-mock-cta{height:32px;background:var(--c4);display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--t5)}
+.ws-mock-cta.good-cta{background:var(--blue2);color:#fff;font-weight:700}
+.ws-mock-row{display:flex;gap:6px}
+.ws-mock-block{height:40px;background:var(--c3);flex:1;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--t5)}
+.ws-mock-block.good-block{background:rgba(37,99,235,.08);border:1px solid rgba(37,99,235,.12);color:var(--blue4)}
+.ws-issues{padding:14px}
+.ws-issue{display:flex;align-items:center;gap:8px;font-size:12px;padding:5px 0;border-bottom:1px solid var(--b1)}
+.ws-issue:last-child{border-bottom:none}
+.ws-issue .ico{font-size:13px;flex-shrink:0}
+.ws-issue.bad{color:var(--t4)}.ws-issue.good{color:var(--t3)}
+
+/* ═══ REPORT ═══ */
+#report-section{padding:110px 0;display:none}
+#report-section.show{display:block;animation:rise .5s ease both}
+.report-wrap{max-width:840px;margin:0 auto;padding:0 24px}
+.rep-loading{text-align:center;padding:80px 20px}
+.rep-spin{width:48px;height:48px;border:3px solid var(--b2);border-top-color:var(--blue2);border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 24px}
+.rep-load-title{font-size:20px;font-weight:800;letter-spacing:-.03em;margin-bottom:8px}
+.rep-load-steps{margin-top:24px;display:flex;flex-direction:column;gap:8px;max-width:360px;margin-left:auto;margin-right:auto}
+.rls{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--t4);padding:8px 0;border-bottom:1px solid var(--b1)}
+.rls.active{color:var(--t2)}.rls.done{color:var(--green3)}
+.rls-ico{width:20px;text-align:center;flex-shrink:0}
+.rls-spin{width:14px;height:14px;border:2px solid var(--b2);border-top-color:var(--blue2);border-radius:50%;animation:spin .8s linear infinite}
+.rep-header{background:var(--c1);border:1px solid var(--b2);padding:36px;margin-bottom:24px}
+.rep-biz-name{font-size:26px;font-weight:900;letter-spacing:-.04em;margin-bottom:6px}
+.rep-meta{font-size:13px;color:var(--t4);margin-bottom:28px}
+.score-display{display:flex;align-items:center;gap:28px;flex-wrap:wrap}
+.score-ring{position:relative;width:100px;height:100px;flex-shrink:0}
+.score-ring svg{transform:rotate(-90deg)}
+.score-ring-text{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.score-num{font-size:26px;font-weight:900;font-family:var(--f3);letter-spacing:-.04em}
+.score-lbl{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--t4)}
+.grade-badge{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:5px 12px}
+.grade-crit{background:rgba(220,38,38,.1);color:var(--red3);border:1px solid rgba(220,38,38,.2)}
+.grade-warn{background:rgba(245,158,11,.1);color:var(--gold3);border:1px solid rgba(245,158,11,.2)}
+.grade-good{background:rgba(16,185,129,.1);color:var(--green3);border:1px solid rgba(16,185,129,.2)}
+.score-detail{flex:1}
+.score-headline{font-size:18px;font-weight:800;letter-spacing:-.03em;margin-bottom:6px}
+.score-subline{font-size:13px;color:var(--t3);line-height:1.7}
+.rep-bars{background:var(--c1);border:1px solid var(--b2);padding:28px;margin-bottom:24px}
+.rep-bars-title{font-size:14px;font-weight:800;letter-spacing:-.02em;margin-bottom:24px}
+.bar-item{margin-bottom:16px}
+.bar-label{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;font-size:12px}
+.bar-name{font-weight:600;color:var(--t2)}
+.bar-pct{font-weight:900;font-family:var(--f3)}
+.bar-track{height:6px;background:var(--b1);overflow:hidden}
+.bar-fill{height:100%;transition:width 1s ease}
+.leaks-table{background:var(--c1);border:1px solid var(--b2);padding:28px;margin-bottom:24px}
+.lt-title{font-size:14px;font-weight:800;letter-spacing:-.02em;margin-bottom:20px}
+.lt-row{display:flex;align-items:flex-start;gap:14px;padding:12px 0;border-bottom:1px solid var(--b1)}
+.lt-row:last-child{border-bottom:none}
+.lt-ico{font-size:20px;flex-shrink:0}
+.lt-body{flex:1}
+.lt-name{font-size:13px;font-weight:700;color:var(--t1);margin-bottom:2px}
+.lt-desc{font-size:12px;color:var(--t4);line-height:1.6}
+.lt-val{font-size:13px;font-weight:900;font-family:var(--f3);color:var(--red3);flex-shrink:0}
+.lt-total{display:flex;justify-content:space-between;align-items:center;padding:16px;background:rgba(220,38,38,.05);border:1px solid rgba(220,38,38,.15);margin-top:16px}
+.lt-total-lbl{font-size:13px;font-weight:700;color:var(--t3)}
+.lt-total-val{font-size:20px;font-weight:900;font-family:var(--f3);color:var(--red3)}
+.rep-ai-analysis{background:var(--c1);border:1px solid var(--b2);padding:28px;margin-bottom:24px}
+.rep-ai-header{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.rep-ai-av{width:36px;height:36px;background:linear-gradient(135deg,var(--blue2),var(--blue3));border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;flex-shrink:0}
+.rep-ai-title{font-size:14px;font-weight:800;letter-spacing:-.02em}
+.rep-ai-badge{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:3px 8px;background:rgba(37,99,235,.08);border:1px solid rgba(37,99,235,.18);color:var(--blue4);margin-top:3px;display:inline-block}
+.rep-ai-text{font-size:14px;color:var(--t2);line-height:1.9;white-space:pre-wrap}
+.rep-ai-text strong{color:var(--t1);font-weight:700}
+.rep-plan{background:var(--c1);border:1px solid var(--b2);padding:28px;margin-bottom:24px}
+.rep-plan-title{font-size:14px;font-weight:800;letter-spacing:-.02em;margin-bottom:20px}
+.plan-step{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--b1)}
+.plan-step:last-child{border-bottom:none}
+.plan-num{width:28px;height:28px;background:rgba(37,99,235,.1);border:1px solid rgba(37,99,235,.2);color:var(--blue4);font-size:12px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.plan-body{flex:1;font-size:13px;color:var(--t2);line-height:1.75}
+.plan-body strong{color:var(--t1);font-weight:700}
+.rep-roi-box{background:rgba(16,185,129,.04);border:1px solid rgba(16,185,129,.18);padding:28px;margin-bottom:24px}
+.roi-header{display:flex;align-items:center;gap:10px;margin-bottom:20px}
+.roi-title{font-size:16px;font-weight:800;letter-spacing:-.03em}
+.roi-g{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:560px){.roi-g{grid-template-columns:1fr}}
+.roi-item{text-align:center;padding:16px;background:rgba(16,185,129,.04);border:1px solid rgba(16,185,129,.1)}
+.roi-n{font-size:28px;font-weight:900;letter-spacing:-.04em;color:var(--green3);font-family:var(--f3)}
+.roi-l{font-size:11px;color:var(--t4);margin-top:4px;font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+.rep-cta{background:linear-gradient(135deg,rgba(29,78,216,.14),rgba(37,99,235,.07));border:1px solid rgba(37,99,235,.24);padding:44px;text-align:center}
+.rcta-title{font-size:clamp(20px,3.5vw,30px);font-weight:900;letter-spacing:-.045em;margin-bottom:12px}
+.rcta-title em{font-family:var(--f2);font-style:italic;font-weight:400;color:var(--blue4)}
+.rcta-sub{font-size:14px;color:var(--t3);line-height:1.85;max-width:480px;margin:0 auto 30px}
+.rcta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:20px}
+.rcta-primary{display:inline-flex;align-items:center;gap:10px;font-size:15px;font-weight:800;padding:17px 34px;background:var(--blue2);color:#fff;border:none;cursor:pointer;transition:all .2s;letter-spacing:.01em}
+.rcta-primary:hover{background:var(--blue3);transform:translateY(-2px);box-shadow:0 16px 48px rgba(37,99,235,.32)}
+.rcta-secondary{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;padding:16px 26px;background:transparent;color:var(--t2);border:1px solid var(--b2);cursor:pointer;transition:all .2s}
+.rcta-secondary:hover{border-color:var(--b3);color:var(--t1)}
+.rcta-contact{display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap}
+.rcta-c{font-size:12px;color:var(--t4)}
+.rcta-c a{color:var(--blue4);font-weight:700}
+
+/* ═══ PROOF ═══ */
+#proof{padding:110px 0}
+.proof-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:52px}
+@media(max-width:700px){.proof-grid{grid-template-columns:1fr}}
+.proof-card{background:var(--c1);border:1px solid var(--b2);padding:32px;position:relative;overflow:hidden}
+.proof-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue2),var(--blue4))}
+.proof-client{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--t4);margin-bottom:14px}
+.proof-quote{font-size:16px;font-weight:600;color:var(--t2);line-height:1.7;font-family:var(--f2);font-style:italic;margin-bottom:20px}
+.proof-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.pstat{text-align:center;background:var(--bg3);border:1px solid var(--b1);padding:12px}
+.pstat-n{font-size:20px;font-weight:900;letter-spacing:-.04em;color:var(--blue4);font-family:var(--f3)}
+.pstat-l{font-size:10px;color:var(--t4);font-weight:600;text-transform:uppercase;letter-spacing:.07em;margin-top:2px}
+
+/* ═══ FLOATING CHAT ═══ */
+#float-btn{position:fixed;bottom:24px;right:24px;z-index:900;width:58px;height:58px;background:var(--blue2);border:none;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 8px 32px rgba(37,99,235,.5);transition:all .2s}
+#float-btn:hover{transform:scale(1.1);background:var(--blue3)}
+#float-notif{position:absolute;top:-4px;right:-4px;width:18px;height:18px;background:var(--red3);border-radius:50%;font-size:9px;font-weight:900;color:#fff;display:none;align-items:center;justify-content:center}
+#float-notif.show{display:flex}
+#float-popup{position:fixed;bottom:96px;right:24px;z-index:900;width:340px;background:var(--c1);border:1px solid var(--b2);box-shadow:0 24px 80px rgba(0,0,0,.65);display:none;flex-direction:column;overflow:hidden;animation:slideUp .25s ease;max-height:520px}
+#float-popup.open{display:flex}
+.fp-head{padding:14px 16px;background:var(--blue2);display:flex;align-items:center;gap:10px;justify-content:space-between}
+.fp-head-l{display:flex;align-items:center;gap:10px}
+.fp-av{width:32px;height:32px;background:rgba(255,255,255,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;color:#fff}
+.fp-name{font-size:13px;font-weight:700;color:#fff}
+.fp-st{font-size:11px;color:rgba(255,255,255,.7)}
+.fp-close{background:none;border:none;color:rgba(255,255,255,.7);font-size:18px;cursor:pointer;padding:0}
+.fp-msgs{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px}
+.fp-msgs::-webkit-scrollbar{width:2px}
+.fp-msg{padding:10px 13px;font-size:12px;line-height:1.65;max-width:260px}
+.fp-msg.b{background:var(--c2);border:1px solid var(--b1);color:var(--t2);border-radius:0 10px 10px 10px}
+.fp-msg.u{background:var(--blue2);color:#fff;border-radius:10px 10px 0 10px;align-self:flex-end}
+.fp-in-row{padding:10px 12px;border-top:1px solid var(--b1);display:flex;gap:8px}
+.fp-in{flex:1;background:var(--bg3);border:1px solid var(--b2);padding:9px 12px;color:var(--t1);font-size:12px;resize:none}
+.fp-in:focus{border-color:var(--blue2)}
+.fp-send{width:36px;height:36px;background:var(--blue2);border:none;cursor:pointer;color:#fff;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s}
+.fp-send:hover{background:var(--blue3)}
+
+/* ═══ FOOTER ═══ */
+footer{background:var(--c1);border-top:1px solid var(--b1);padding:40px 0;position:relative;z-index:1}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.footer-brand{font-size:13px;font-weight:800;letter-spacing:-.02em}
+.footer-brand span{color:var(--blue4)}
+.footer-links{display:flex;gap:20px}
+.footer-links a{font-size:12px;color:var(--t4);font-weight:600;transition:color .15s}
+.footer-links a:hover{color:var(--t1)}
+.footer-copy{font-size:11px;color:var(--t5)}
+
+/* ═══ UTILS ═══ */
+.glow-blue{box-shadow:0 0 0 1px rgba(37,99,235,.3),0 8px 32px rgba(37,99,235,.2)}
+.mb4{margin-bottom:4px}.mb8{margin-bottom:8px}.mb12{margin-bottom:12px}.mb16{margin-bottom:16px}.mb20{margin-bottom:20px}.mb24{margin-bottom:24px}.mb32{margin-bottom:32px}.mb48{margin-bottom:48px}
+.text-center{text-align:center}
+.cursor-anim{display:inline-block;width:2px;height:1em;background:var(--blue4);margin-left:2px;animation:blink 1s ease-in-out infinite;vertical-align:text-bottom}
+</style>
+</head>
+<body>
+
+<!-- AMBIENT -->
+<div id="bg-wrap">
+  <div class="orb" id="o1"></div>
+  <div class="orb" id="o2"></div>
+  <div class="orb" id="o3"></div>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-logo" onclick="scrollTo(0,0)">
+    <div class="nav-mark">AG</div>
+    <div class="nav-name">Atlas<span>Growth</span></div>
+  </div>
+  <div class="nav-r">
+    <div class="nav-links">
+      <div class="nav-link" onclick="document.getElementById('calculator').scrollIntoView({behavior:'smooth'})">Calculator</div>
+      <div class="nav-link" onclick="document.getElementById('demos').scrollIntoView({behavior:'smooth'})">Live Demos</div>
+      <div class="nav-link" onclick="document.getElementById('assessment').scrollIntoView({behavior:'smooth'})">Free Analysis</div>
+    </div>
+    <div class="nav-pill">AI-Powered</div>
+    <button class="nav-btn" onclick="document.getElementById('assessment').scrollIntoView({behavior:'smooth'})">Start Free Analysis →</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <span class="hbp"></span>
+      Free · No Obligation · AI-Powered Analysis
+    </div>
+    <h1 class="hero-h">
+      Your business is<br>
+      <em>losing revenue</em><br>
+      <span class="shine">right now.</span>
+    </h1>
+    <p class="hero-p">
+      Most service businesses lose <strong>$40,000–$120,000/year</strong> through missed calls, slow responses, and no booking automation. In 5 minutes, our AI finds exactly where your money is going — and shows you how to fix it.
+    </p>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="document.getElementById('assessment').scrollIntoView({behavior:'smooth'})">
+        Get My Free Analysis
+        <span>→</span>
+      </button>
+      <button class="btn-ghost" onclick="document.getElementById('demos').scrollIntoView({behavior:'smooth'})">
+        See Live AI Demos ↓
+      </button>
+    </div>
+    <div class="hero-proof">
+      <div class="hp"><div class="hp-n">$47K</div><div class="hp-l">Avg. Revenue Recovered</div></div>
+      <div class="hp-div"></div>
+      <div class="hp"><div class="hp-n">14 Days</div><div class="hp-l">To Full System Live</div></div>
+      <div class="hp-div"></div>
+      <div class="hp"><div class="hp-n">+31%</div><div class="hp-l">Avg. Booking Rate Increase</div></div>
+      <div class="hp-div"></div>
+      <div class="hp"><div class="hp-n">24/7</div><div class="hp-l">AI Responding For You</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-outer z1">
+  <div class="ticker-inner" id="ticker">
+    <span class="ti"><span class="d"></span>Missed Calls = Lost Revenue</span>
+    <span class="ti hi"><span class="d"></span>AI Receptionist — Never Miss a Lead</span>
+    <span class="ti"><span class="d"></span>Automated Booking Increases Conversions 31%</span>
+    <span class="ti hi"><span class="d"></span>Follow-Up Automation Closes Cold Leads</span>
+    <span class="ti"><span class="d"></span>Review Automation Builds Google Rankings</span>
+    <span class="ti hi"><span class="d"></span>Social DM Automation Captures Every Inquiry</span>
+    <span class="ti"><span class="d"></span>CRM Pipeline — Full Visibility Into Your Leads</span>
+    <span class="ti hi"><span class="d"></span>Atlas Growth — AI Revenue Infrastructure</span>
+    <span class="ti"><span class="d"></span>AI Chat Widget — Convert Visitors 24/7</span>
+    <span class="ti hi"><span class="d"></span>Website + AI = Revenue Machine</span>
+    <span class="ti"><span class="d"></span>Free Analysis • No Obligation • 5 Minutes</span>
+    <span class="ti"><span class="d"></span>Missed Calls = Lost Revenue</span>
+    <span class="ti hi"><span class="d"></span>AI Receptionist — Never Miss a Lead</span>
+    <span class="ti"><span class="d"></span>Automated Booking Increases Conversions 31%</span>
+    <span class="ti hi"><span class="d"></span>Follow-Up Automation Closes Cold Leads</span>
+    <span class="ti"><span class="d"></span>Review Automation Builds Google Rankings</span>
+    <span class="ti hi"><span class="d"></span>Social DM Automation Captures Every Inquiry</span>
+    <span class="ti"><span class="d"></span>CRM Pipeline — Full Visibility Into Your Leads</span>
+    <span class="ti hi"><span class="d"></span>Atlas Growth — AI Revenue Infrastructure</span>
+    <span class="ti"><span class="d"></span>AI Chat Widget — Convert Visitors 24/7</span>
+    <span class="ti hi"><span class="d"></span>Website + AI = Revenue Machine</span>
+    <span class="ti"><span class="d"></span>Free Analysis • No Obligation • 5 Minutes</span>
+  </div>
+</div>
+
+<!-- CALCULATOR -->
+<section id="calculator">
+  <div class="w">
+    <div class="s-eye">Revenue Intelligence</div>
+    <h2 class="s-h">See how much your business is <em>losing right now</em></h2>
+    <p class="s-p">Adjust the sliders to match your business. Calculates the exact revenue you're leaving on the table every year.</p>
+    <div class="calc-shell">
+      <div class="calc-header">
+        <div>
+          <div class="calc-h3">Live Revenue Leak Calculator</div>
+          <div class="calc-sub">Based on industry averages for service businesses. Results update in real time.</div>
+        </div>
+        <div class="live-badge"><span class="lb-dot"></span>Live Calculation</div>
+      </div>
+      <div class="sliders-g">
+        <div>
+          <div class="sl-label">Monthly Leads <span class="sl-v" id="sv-leads">45</span></div>
+          <input type="range" min="5" max="200" value="45" id="sl-leads" oninput="updateCalc()">
+        </div>
+        <div>
+          <div class="sl-label">Avg. Job Value <span class="sl-v" id="sv-job">$350</span></div>
+          <input type="range" min="50" max="5000" value="350" step="25" id="sl-job" oninput="updateCalc()">
+        </div>
+        <div>
+          <div class="sl-label">Missed Calls / Month <span class="sl-v" id="sv-missed">12</span></div>
+          <input type="range" min="0" max="60" value="12" id="sl-missed" oninput="updateCalc()">
+        </div>
+        <div>
+          <div class="sl-label">Current Close Rate <span class="sl-v" id="sv-close">28%</span></div>
+          <input type="range" min="5" max="85" value="28" id="sl-close" oninput="updateCalc()">
+        </div>
+      </div>
+      <div class="res-3">
+        <div class="rbox r">
+          <div class="rbox-lbl">Annual Revenue Lost</div>
+          <div class="rbox-num r" id="r-lost">$0</div>
+          <div class="rbox-sub">From missed calls alone</div>
+        </div>
+        <div class="rbox a">
+          <div class="rbox-lbl">Recoverable With AI</div>
+          <div class="rbox-num a" id="r-recover">$0</div>
+          <div class="rbox-sub">Realistic 12-month gain</div>
+        </div>
+        <div class="rbox g">
+          <div class="rbox-lbl">Improved Close Rate</div>
+          <div class="rbox-num g" id="r-close">0%</div>
+          <div class="rbox-sub">With follow-up automation</div>
+        </div>
+      </div>
+      <div class="ai-insight-row">
+        <div class="ai-orb">🤖</div>
+        <div class="ai-text-body" id="calc-insight">Adjust the sliders above to see your personalized revenue analysis.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVENUE LEAKS -->
+<section id="leaks">
+  <div class="w">
+    <div class="s-eye">The Problem</div>
+    <h2 class="s-h">Where service businesses <em>leak revenue</em></h2>
+    <p class="s-p">These six gaps are costing the average service business over $50,000 per year. Most owners don't even know they exist.</p>
+    <div class="leaks-g">
+      <div class="lk"><div class="lk-idx">01</div><span class="lk-ico">📵</span><div class="lk-title">Missed Calls</div><div class="lk-desc">62% of service business calls go unanswered. Every missed call is a lead that goes to your competitor — often within minutes.</div><div class="lk-loss">Avg. loss: $18,000/yr</div></div>
+      <div class="lk"><div class="lk-idx">02</div><span class="lk-ico">🐢</span><div class="lk-title">Slow Response Time</div><div class="lk-desc">Leads contacted within 5 minutes convert at 21x the rate of leads after 30 minutes. Most businesses respond in hours.</div><div class="lk-loss">Avg. loss: $14,000/yr</div></div>
+      <div class="lk"><div class="lk-idx">03</div><span class="lk-ico">📅</span><div class="lk-title">No Booking Automation</div><div class="lk-desc">40% of customers want to book online. Without it, they bounce to competitors who make it easy. Friction kills conversion.</div><div class="lk-loss">Avg. loss: $12,000/yr</div></div>
+      <div class="lk"><div class="lk-idx">04</div><span class="lk-ico">🔁</span><div class="lk-title">Inconsistent Follow-Up</div><div class="lk-desc">80% of sales require 5+ follow-ups. Most businesses follow up once — or never. Quotes go cold. Leads disappear.</div><div class="lk-loss">Avg. loss: $9,000/yr</div></div>
+      <div class="lk"><div class="lk-idx">05</div><span class="lk-ico">⭐</span><div class="lk-title">Low Review Volume</div><div class="lk-desc">Businesses with 50+ reviews convert 270% more than those with fewer than 10. Reviews are your most powerful trust signal.</div><div class="lk-loss">Avg. loss: $7,000/yr</div></div>
+      <div class="lk"><div class="lk-idx">06</div><span class="lk-ico">📊</span><div class="lk-title">No CRM Visibility</div><div class="lk-desc">Without a pipeline, leads fall through cracks, deals stall, and you can't see what's working. You can't grow what you can't measure.</div><div class="lk-loss">Avg. loss: $6,000/yr</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ASSESSMENT -->
+<section id="assessment">
+  <div class="assess-wrap">
+    <div class="s-eye mb8">Free AI Business Analysis</div>
+    <h2 class="s-h mb32">Answer <em>8 questions</em>. Get your full report.</h2>
+    <div class="prog-row">
+      <span class="prog-txt" id="prog-label">Step 1 of 8</span>
+      <span class="prog-pct" id="prog-pct">0%</span>
+    </div>
+    <div class="prog-track"><div class="prog-fill" id="prog-fill" style="width:0%"></div></div>
+
+    <div class="fstep on" id="step-1">
+      <div class="fs-eye">Business Profile</div>
+      <div class="fs-q">Let's start with the <em>basics.</em></div>
+      <div class="fs-hint">This personalizes your entire analysis. Takes 30 seconds.</div>
+      <div class="fi-2 mb16">
+        <div class="fi-wrap"><input type="text" id="biz-name" placeholder="Business Name" oninput="validateStep(1)"></div>
+        <div class="fi-wrap">
+          <select id="biz-type" onchange="validateStep(1)">
+            <option value="">Industry / Service Type</option>
+            <option>Auto Detailing</option><option>Pressure Washing</option><option>HVAC</option>
+            <option>Landscaping / Lawn Care</option><option>Cleaning Services</option><option>Plumbing</option>
+            <option>Electrical</option><option>Roofing</option><option>Painting</option>
+            <option>General Contracting</option><option>Pool Service</option><option>Moving Services</option>
+            <option>Pest Control</option><option>Tree Service</option><option>Junk Removal</option>
+            <option>Other Service Business</option>
+          </select>
+        </div>
+      </div>
+      <div class="fi-2">
+        <div class="fi-wrap"><input type="text" id="biz-city" placeholder="City / Region" oninput="validateStep(1)"></div>
+        <div class="fi-wrap">
+          <select id="biz-size" onchange="validateStep(1)">
+            <option value="">Team Size</option>
+            <option>Solo / Owner-Operator</option><option>2–5 employees</option>
+            <option>6–15 employees</option><option>16+ employees</option>
+          </select>
+        </div>
+      </div>
+      <div class="step-nav">
+        <span class="step-info">Step 1 of 8</span>
+        <button class="btn-next" id="next-1" onclick="goStep(2)" disabled>Continue →</button>
+      </div>
+    </div>
+
+    <div class="fstep" id="step-2">
+      <div class="fs-eye">Revenue Baseline</div>
+      <div class="fs-q">What's your <em>monthly revenue</em> range?</div>
+      <div class="fs-hint">This helps us calculate the dollar impact of each gap we find.</div>
+      <div class="opts g2">
+        <div class="opt" onclick="selectOpt(this,'rev','under10k')"><div class="opt-radio"></div><div class="opt-body"><div class="opt-main">Under $10,000/mo</div><div class="opt-sub">Early stage or part-time operation</div></div></div>
+        <div class="opt" onclick="selectOpt(this,'rev','10-30k')"><div class="opt-radio"></div><div class="opt-body"><div class="opt-main">$10,000 – $30,000/mo</div><div class="opt-sub">Established, growing consistently</div></div></div>
+        <div class="opt" onclick="selectOpt(this,'rev','30-80k')"><div class="opt-radio"></div><div class="opt-body"><div class="opt-main">$30,000 – $80,000/mo</div><div class="opt-sub">Strong operation, scaling now</div></div></div>
+        <div class="opt" onclick="selectOpt(this,'rev','80k+')"><div class="opt-radio"></div><div class="opt-body"><div class="opt-main">$80,000+/mo</div><div class="opt-sub">High-volume, multi-team operation</div></div></div>
+      </div>
+      <div class="step-nav">
+        <button class="btn-back" onclick="goStep(1)">← Back</button>
+        <span class="step-info">Step 2 of 8</span>
+        <button class="btn-next" id="next-2" onclick="goStep(3)" disabled>Continue →</button>
+      </div>
+    </div>
+
+    <div class="fstep" id="step-3">
+      <div class="fs-eye">Lead Capture</div>
+      <div class="fs-q">How often do you <em>miss calls</em> from potential customers?</div>
+      <div class="fs-hint">Be honest — this is where most businesses lose the most money.</div>
+      <div class="opts">
+        <div class="opt" onclick="selectOpt(this,'calls','rarely')"><div class="opt-radio"></div><div class="opt-body"><div class="opt-main">Rarely — we answer almost everything</div><div class="opt-sub">Less than 2–3 missed calls per week</div><span class="opt-tag tag-g">Low Risk</span></div></div>
+        <div class="opt" onclick="selectOpt(this,'calls','sometimes')"><div class="opt-radio"></div><div class="opt-body"><div class="opt-main">Sometimes — especially when we're on a job</div><div class="opt-sub">5–10 missed calls per week, mostly during work hours</div><span class="opt-tag tag-a">Medium Risk</span></div></div>
+        <div class="opt" onclick="selectOpt(this,'calls','often')"><div class="opt-radio"></div><div class="opt-body"><div class="opt-main">Often — it's a real problem</div><div class="opt-sub">10+ missed calls per week, calls go to voicemail constantly</div><span class="opt-tag tag-r">High Risk · $15K–$30K/yr lost</span></div></div>
+        <div class="opt" onclick="selectOpt(this,'calls','always')"><div class="opt-radio"></div><div class="opt-body"><div class="opt-main">Almost always — we're one person doing everything</div><div class="opt-sub">Majority of calls are missed, no dedicated person answering</div><span class="opt-tag tag-r">Critical · $30K–$60K/yr lost</span></div></div>
+      </div>
+      <div class="step-nav">
+        <button class="btn-back" onclick="goStep(2)">← Back</button>
+        <span class="step-info">Step 3 of 8</span>
+        <button class="btn-next" id="next-3" onclick="goStep(4)" disabled>Continue →</button>
+      </div>
+    </div>
+
+    <div class="fstep" id="step-4">
+      <div class="fs-eye">Booking Workflow</div>
+      <div class="fs-q">How do customers currently <em>book with you?</em></div>
+      <div class="fs-hint">Friction in the booking process is one of the top reasons leads don't convert.</div>
+      <div class="opts">
+        <div class="opt" onclick="selectOpt(this,'booking','auto')"><div class="opt-radio"></div><div class="opt-body"><div class="opt-main">Online booking — customers self-schedule 24/7</div><div class="opt-sub">Automated calendar, instant confirmation, no back-and-forth</div><span class="opt-tag tag-g">Optimal</span></div></div>
+        <div class="opt" onclick="selectOpt(this,'booking','form')"><div class="opt-radio"></div><div class="opt-body"><div class="opt-main">Contact form — they submit, we call back</div><div class="opt-sub">Website form or email, then phone tag to confirm</div><span class="opt-tag tag-a">Moderate Friction</span></div></div>
+        <div class="opt" onclick="selectOpt(this,'booking','callonly')"><div class="opt-radio"></div><div class="opt-body"><div class="opt-main">Phone only — they have to call us</div><div class="opt-sub">No online option. If we miss the call, we lose the customer.</div><span class="opt-tag tag-r">High Friction · Major Drop-off</span></div></div>
+        <div class="opt" onclick="selectOpt(this,'booking','social')"><div class="opt-radio"></div><div class="opt-body"><div class="opt-main">Social media / DMs — Instagram, Facebook</div><div class="opt-sub">Informal, inconsistent, easy to miss inquiries</div><span class="opt-tag tag-r">Unstructured · Leads Get Lost</span></div></div>
+      </div>
+      <div class="step-nav">
+        <button class="btn-back" onclick="goStep(3)">← Back</button>
+        <span class="step-info">Step 4 of 8</span>
+        <button class="btn-next" id="next-4" onclick="goStep(5)" disabled>Continue →</button>
+      </div>
+    </div>
+
+    <div class="fstep" id="step-5">
+      <div class="fs-eye">Follow-Up System</div>
+      <div class="fs-q">What happens after a lead <em>doesn't book immediately?</em></div>
+      <div class="fs-hint">80% of sales require 5+ touchpoints. Most businesses make 1–2.</div>
+      <div class="opts">
+        <div class="opt" onclick="selectOpt(this,'followup','automated')"><div class="opt-radio"></div><div class="opt-body"><div class="opt-main">Automated sequences — SMS + email follow-up runs itself</div><div class="opt-sub">Multi-step automation handles it. No manual effort required.</div><span class="opt-tag tag-g">Optimal</span></div></div>
+        <div class="opt" onclick="selectOpt(this,'followup','manual')"><div class="opt-radio"></div><div class="opt-body"><div class="opt-main">Manual — we call or text when we remember</div><div class="opt-sub">Inconsistent. Depends on time and memory. Many leads go cold.</div><span class="opt-tag tag-a">Inconsistent</span></div></div>
+        <div class="opt" onclick="selectOpt(this,'followup','none')"><div class="opt-radio"></div><div class="opt-body"><div class="opt-main">None — if they don't book, we move on</div><div class="opt-sub">No follow-up at all. We're leaving serious money on the table.</div><span class="opt-tag tag-r">Critical Gap</span></div></div>
+      </div>
+      <div class="step-nav">
+        <button class="btn-back" onclick="goStep(4)">← Back</button>
+        <span class="step-info">Step 5 of 8</span>
+        <button class="btn-next" id="next-5" onclick="goStep(6)" disabled>Continue →</button>
+      </div>
+    </div>
+
+    <div class="fstep" id="step-6">
+      <div class="fs-eye">Reputation & Reviews</div>
+      <div class="fs-q">How many <em>Google reviews</em> does your business have?</div>
+      <div class="fs-hint">Reviews are your #1 conversion driver. More reviews = more booked jobs at higher rates.</div>
+      <div class="opts g2">
+        <div class="opt" onclick="selectOpt(this,'reviews','0-10')"><div class="opt-radio"></div><div class="opt-body"><div class="opt-main">0 – 10 reviews</div><div class="opt-sub">Just starting. Major visibility gap.</div><span class="opt-tag tag-r">Critical</span></div></div>
+        <div class="opt" onclick="selectOpt(this,'reviews','10-30')"><div class="opt-radio"></div><div class="opt-body"><div class="opt-main">10 – 30 reviews</div><div class="opt-sub">Building, but competitors likely have more.</div><span class="opt-tag tag-a">Below Average</span></div></div>
+        <div class="opt" onclick="selectOpt(this,'reviews','30-75')"><div class="opt-radio"></div><div class="opt-body"><div class="opt-main">30 – 75 reviews</div><div class="opt-sub">Solid foundation. Room to grow.</div><span class="opt-tag tag-a">Average</span></div></div>
+        <div class="opt" onclick="selectOpt(this,'reviews','75+')"><div class="opt-radio"></div><div class="opt-body"><div class="opt-main">75+ reviews</div><div class="opt-sub">Strong social proof. Keep growing.</div><span class="opt-tag tag-g">Strong</span></div></div>
+      </div>
+      <div class="step-nav">
+        <button class="btn-back" onclick="goStep(5)">← Back</button>
+        <span class="step-info">Step 6 of 8</span>
+        <button class="btn-next" id="next-6" onclick="goStep(7)" disabled>Continue →</button>
+      </div>
+    </div>
+
+    <div class="fstep" id="step-7">
+      <div class="fs-eye">Online Presence</div>
+      <div class="fs-q">How would you rate your <em>current website?</em></div>
+      <div class="fs-hint">Your website is your 24/7 salesperson. Most service business sites aren't doing their job.</div>
+      <div class="scale-wrap">
+        <div class="scale-row">
+          <button class="s-btn" onclick="selectScale(this,'website',1)">1</button>
+          <button class="s-btn" onclick="selectScale(this,'website',2)">2</button>
+          <button class="s-btn" onclick="selectScale(this,'website',3)">3</button>
+          <button class="s-btn" onclick="selectScale(this,'website',4)">4</button>
+          <button class="s-btn" onclick="selectScale(this,'website',5)">5</button>
+          <button class="s-btn" onclick="selectScale(this,'website',6)">6</button>
+          <button class="s-btn" onclick="selectScale(this,'website',7)">7</button>
+          <button class="s-btn" onclick="selectScale(this,'website',8)">8</button>
+          <button class="s-btn" onclick="selectScale(this,'website',9)">9</button>
+          <button class="s-btn" onclick="selectScale(this,'website',10)">10</button>
+        </div>
+        <div class="scale-leg"><span>No website / very outdated</span><span>World-class, converts visitors</span></div>
+      </div>
+      <div class="step-nav">
+        <button class="btn-back" onclick="goStep(6)">← Back</button>
+        <span class="step-info">Step 7 of 8</span>
+        <button class="btn-next" id="next-7" onclick="goStep(8)" disabled>Continue →</button>
+      </div>
+    </div>
+
+    <div class="fstep" id="step-8">
+      <div class="fs-eye">Your Report</div>
+      <div class="fs-q">Where should we send your <em>growth report?</em></div>
+      <div class="fs-hint">Your personalized AI analysis is generating now. Enter your info to unlock it.</div>
+      <div class="fi-2 mb16">
+        <div class="fi-wrap"><input type="text" id="contact-name" placeholder="Your Name" oninput="validateStep(8)"></div>
+        <div class="fi-wrap"><input type="text" id="contact-phone" placeholder="Phone Number" oninput="validateStep(8)"></div>
+      </div>
+      <div class="fi-wrap mb16"><input type="email" id="contact-email" placeholder="Email Address" oninput="validateStep(8)"></div>
+      <div style="font-size:11px;color:var(--t5);line-height:1.7">No spam. No pressure. Your report is free. By submitting, Atlas Growth may follow up with your personalized recommendations.</div>
+      <div class="step-nav">
+        <button class="btn-back" onclick="goStep(7)">← Back</button>
+        <span class="step-info">Step 8 of 8</span>
+        <button class="btn-next" id="next-8" onclick="generateReport()" disabled>Generate My Report →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REPORT -->
+<section id="report-section">
+  <div class="report-wrap">
+    <div id="report-loading" class="rep-loading">
+      <div class="rep-spin"></div>
+      <div class="rep-load-title">Generating Your Revenue Analysis</div>
+      <div style="font-size:13px;color:var(--t4)">Our AI is analyzing your business profile...</div>
+      <div class="rep-load-steps" id="rep-steps">
+        <div class="rls" id="rls1"><div class="rls-ico"><div class="rls-spin"></div></div>Analyzing business profile & niche</div>
+        <div class="rls" id="rls2"><div class="rls-ico">○</div>Identifying revenue gaps</div>
+        <div class="rls" id="rls3"><div class="rls-ico">○</div>Calculating monthly revenue leaks</div>
+        <div class="rls" id="rls4"><div class="rls-ico">○</div>Benchmarking against competitors</div>
+        <div class="rls" id="rls5"><div class="rls-ico">○</div>Writing personalized action plan</div>
+        <div class="rls" id="rls6"><div class="rls-ico">○</div>Generating ROI projections</div>
+      </div>
+    </div>
+    <div id="report-content" style="display:none">
+      <div class="rep-header">
+        <div class="rep-biz-name" id="rep-biz-name">Business Name</div>
+        <div class="rep-meta" id="rep-meta">Report generated today</div>
+        <div class="score-display">
+          <div class="score-ring">
+            <svg width="100" height="100" viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="42" fill="none" stroke="rgba(255,255,255,.05)" stroke-width="8"/>
+              <circle id="score-arc" cx="50" cy="50" r="42" fill="none" stroke="var(--blue2)" stroke-width="8" stroke-linecap="round" stroke-dasharray="264" stroke-dashoffset="264" style="transition:stroke-dashoffset 1.5s ease"/>
+            </svg>
+            <div class="score-ring-text">
+              <div class="score-num" id="score-num">0</div>
+              <div class="score-lbl">Score</div>
+            </div>
+          </div>
+          <div class="score-detail">
+            <div style="margin-bottom:10px"><span class="grade-badge" id="grade-badge">Analyzing...</span></div>
+            <div class="score-headline" id="score-headline">Revenue System Assessment</div>
+            <div class="score-subline" id="score-subline">Your personalized analysis is ready.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rep-bars">
+        <div class="rep-bars-title">Revenue System Score — Category Breakdown</div>
+        <div id="bar-items"></div>
+      </div>
+
+      <div class="leaks-table">
+        <div class="lt-title">Revenue Leak Analysis — Where You're Losing Money</div>
+        <div id="leak-rows"></div>
+        <div class="lt-total">
+          <div class="lt-total-lbl">Estimated Monthly Revenue Being Lost</div>
+          <div class="lt-total-val" id="leak-total">$0</div>
+        </div>
+      </div>
+
+      <div class="rep-ai-analysis">
+        <div class="rep-ai-header">
+          <div class="rep-ai-av">🤖</div>
+          <div>
+            <div class="rep-ai-title">AI Revenue Analysis</div>
+            <div class="rep-ai-badge">Powered by Claude AI · Personalized</div>
+          </div>
+        </div>
+        <div class="rep-ai-text" id="rep-analysis-text">Generating your analysis...</div>
+      </div>
+
+      <div class="rep-plan">
+        <div class="rep-plan-title">Your Personalized Action Plan</div>
+        <div id="rep-plan-content"><div class="rep-ai-text" id="rep-plan-text">Generating your action plan...</div></div>
+      </div>
+
+      <div class="rep-roi-box">
+        <div class="roi-header">
+          <span style="font-size:20px">💰</span>
+          <div class="roi-title">ROI Projection — Atlas Growth System</div>
+        </div>
+        <div class="roi-g" id="roi-grid"></div>
+      </div>
+
+      <div class="rep-cta">
+        <div class="rcta-title">Ready to Recover <em>This Revenue?</em></div>
+        <div class="rcta-sub">Book a free 15-minute strategy call. We'll walk through your results together and show you exactly what a system would look like for your business. No pressure. No pitch. Just clarity.</div>
+        <div class="rcta-btns">
+          <button class="rcta-primary" onclick="window.open('https://api.leadconnectorhq.com/widget/booking/WwQ9yUoNHxKqPAljkFEv','_blank')">📅 Book Free Strategy Call</button>
+          <button class="rcta-secondary" onclick="window.open('https://atlasgrowthweb.com','_blank')">View Full Website →</button>
+        </div>
+        <div class="rcta-contact">
+          <div class="rcta-c">Questions? <a href="tel:6175798495">(617) 579-8495</a></div>
+          <div class="rcta-c"><a href="https://www.instagram.com/atlasgrowthautomations/" target="_blank">@atlasgrowthautomations</a></div>
+          <div class="rcta-c"><a href="https://atlasgrowthweb.com" target="_blank">atlasgrowthweb.com</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIVE DEMOS -->
+<section id="demos">
+  <div class="w">
+    <div class="demos-intro">
+      <div class="s-eye mb8">Live AI Demos</div>
+      <h2 class="s-h mb16">See every system <em>in action</em></h2>
+      <p class="s-p" style="max-width:100%">These aren't mockups. Every demo below is interactive and powered by the same AI infrastructure we install for clients. Try them yourself.</p>
+    </div>
+
+    <div class="demo-tabs">
+      <div class="dtab on" onclick="switchDemo('chat',this)"><span>💬</span>AI Chat</div>
+      <div class="dtab" onclick="switchDemo('phone',this)"><span>📞</span>AI Receptionist</div>
+      <div class="dtab" onclick="switchDemo('booking',this)"><span>📅</span>Booking</div>
+      <div class="dtab" onclick="switchDemo('followup',this)"><span>🔁</span>Follow-Up</div>
+      <div class="dtab" onclick="switchDemo('review',this)"><span>⭐</span>Reviews</div>
+      <div class="dtab" onclick="switchDemo('social',this)"><span>📱</span>Social DMs</div>
+      <div class="dtab" onclick="switchDemo('crm',this)"><span>📊</span>CRM</div>
+      <div class="dtab" onclick="switchDemo('website',this)"><span>🌐</span>Website</div>
+    </div>
+
+    <!-- CHAT DEMO -->
+    <div class="dpanel on" id="dp-chat">
+      <div class="demo-2col">
+        <div>
+          <div class="chat-win">
+            <div class="cw-head">
+              <div class="cw-av">A</div>
+              <div>
+                <div class="cw-n">Atlas AI — Your Business Assistant</div>
+                <div class="cw-st">Online now · Responds instantly</div>
+              </div>
+            </div>
+            <div class="cw-msgs" id="chat-msgs">
+              <div class="mrow b">
+                <div class="mav">🤖</div>
+                <div class="mbub">Hi! I'm Atlas, your AI business assistant. I can answer questions about your services, pricing, and availability — and book appointments 24/7. What can I help you with today?</div>
+              </div>
+            </div>
+            <div class="cw-sugs">
+              <div class="cw-sug" onclick="sendChatMsg('What services do you offer?')">Services?</div>
+              <div class="cw-sug" onclick="sendChatMsg('How much does it cost?')">Pricing?</div>
+              <div class="cw-sug" onclick="sendChatMsg('Can I book an appointment?')">Book now</div>
+              <div class="cw-sug" onclick="sendChatMsg('Are you available this week?')">Availability</div>
+            </div>
+            <div class="cw-in-row">
+              <textarea class="cw-in" id="chat-in" placeholder="Ask anything about this business..." rows="1" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendChatFromInput()}"></textarea>
+              <button class="cw-send" onclick="sendChatFromInput()">↑</button>
+            </div>
+          </div>
+        </div>
+        <div class="demo-info">
+          <div class="ai-powered-badge">⚡ Live Claude AI · Real Responses</div>
+          <h3>AI Chat Widget</h3>
+          <p>This live chat is powered by Claude AI — the same system we customize and install on client websites. Ask it anything. It answers questions, qualifies leads, and books appointments 24/7.</p>
+          <div class="feat-list">
+            <div class="feat"><div class="feat-ico">⚡</div><div><strong>Instant 24/7 Response</strong><span>No more "we'll call you back." Customers get answers immediately, even at 2am.</span></div></div>
+            <div class="feat"><div class="feat-ico">🎯</div><div><strong>Lead Qualification</strong><span>AI asks the right questions, collects contact info, and routes hot leads to you.</span></div></div>
+            <div class="feat"><div class="feat-ico">📅</div><div><strong>Direct Booking</strong><span>Connects to your calendar. Customers book directly from the chat.</span></div></div>
+            <div class="feat"><div class="feat-ico">🧠</div><div><strong>Trained On Your Business</strong><span>Knows your services, pricing, service area, and FAQs — answers as if it IS your business.</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PHONE DEMO -->
+    <div class="dpanel" id="dp-phone">
+      <div class="demo-2col">
+        <div>
+          <div class="phone-wrap">
+            <div class="phone-vis">
+              <div class="ph-notch"></div>
+              <div class="ph-screen">
+                <div class="ph-av">
+                  <div class="ph-ring"></div><div class="ph-ring"></div>
+                  A
+                </div>
+                <div class="ph-name">Atlas AI Receptionist</div>
+                <div class="ph-st" id="ph-status">Active Call</div>
+                <div class="ph-timer" id="ph-timer">0:00</div>
+                <div class="ph-acts">
+                  <button class="ph-btn green">🔊</button>
+                  <button class="ph-btn red">📵</button>
+                </div>
+              </div>
+            </div>
+            <div class="transcript-box">
+              <div class="tb-head">
+                <span class="tb-title">Live Transcript</span>
+                <span class="tb-live-badge">● Recording</span>
+              </div>
+              <div id="transcript-lines">
+                <div class="tl-line"><span class="tl-who ai">AI:</span><span class="tl-msg">Thank you for calling Premier Auto Detail. This is Atlas, your AI assistant. How can I help you today?</span></div>
+                <div class="tl-line"><span class="tl-who c">Caller:</span><span class="tl-msg">Hi, I wanted to get a price on a full detail for my SUV.</span></div>
+                <div class="tl-line"><span class="tl-who ai">AI:</span><span class="tl-msg">Absolutely! For an SUV, our full interior and exterior detail runs $199. That includes hand wash, clay bar, interior vacuum, wipe-down, and window clean. Would you like to schedule that?</span></div>
+                <div class="tl-line"><span class="tl-who c">Caller:</span><span class="tl-msg">Yeah that sounds good. Do you have anything this Saturday?</span></div>
+                <div class="tl-line"><span class="tl-who ai">AI:</span><span class="tl-msg">We do have availability Saturday at 9am and 11am. Which works better for you?</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="demo-info">
+          <h3>AI Voice Receptionist</h3>
+          <p>Never miss another call. Your AI receptionist answers 24/7, handles pricing questions, qualifies callers, and books directly to your calendar — while you're on the job.</p>
+          <div class="feat-list">
+            <div class="feat"><div class="feat-ico">📵</div><div><strong>Zero Missed Calls</strong><span>Every inbound call answered instantly, day or night, even on holidays.</span></div></div>
+            <div class="feat"><div class="feat-ico">🗓️</div><div><strong>Live Calendar Booking</strong><span>Checks real-time availability and books appointments on the spot.</span></div></div>
+            <div class="feat"><div class="feat-ico">📋</div><div><strong>Call Summaries</strong><span>Every call gets summarized and sent to your team instantly.</span></div></div>
+            <div class="feat"><div class="feat-ico">🔀</div><div><strong>Smart Routing</strong><span>Can transfer to a human, send a text follow-up, or escalate based on urgency.</span></div></div>
+          </div>
+          <button class="btn-primary" style="margin-top:20px;font-size:13px;padding:12px 24px" onclick="startPhoneDemo()">▶ Replay Demo Call</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- BOOKING DEMO -->
+    <div class="dpanel" id="dp-booking">
+      <div class="demo-2col">
+        <div>
+          <div class="book-split">
+            <div class="cal-box">
+              <div class="cal-head">
+                <span class="cal-month" id="cal-month-label">March 2026</span>
+                <div class="cal-navs">
+                  <button class="cal-nav" onclick="changeCalMonth(-1)">‹</button>
+                  <button class="cal-nav" onclick="changeCalMonth(1)">›</button>
+                </div>
+              </div>
+              <div class="cal-grid" id="cal-grid">
+                <div class="cal-dow">S</div><div class="cal-dow">M</div><div class="cal-dow">T</div><div class="cal-dow">W</div><div class="cal-dow">T</div><div class="cal-dow">F</div><div class="cal-dow">S</div>
+              </div>
+            </div>
+            <div class="slots-box">
+              <div class="slots-lbl">Available Times — <span id="sel-date-label">Select a date</span></div>
+              <div class="slots-g" id="slots-grid">
+                <div class="slot tk">8:00 AM</div><div class="slot tk">9:00 AM</div>
+                <div class="slot tk">10:00 AM</div><div class="slot tk">11:00 AM</div>
+                <div class="slot tk">12:00 PM</div><div class="slot tk">1:00 PM</div>
+                <div class="slot tk">2:00 PM</div><div class="slot tk">3:00 PM</div>
+              </div>
+              <button class="book-btn" id="book-btn" onclick="confirmBooking()">Select a Date First</button>
+              <div class="book-conf" id="book-conf">
+                <div class="bc-ico">✅</div>
+                <div class="bc-title">Appointment Confirmed!</div>
+                <div class="bc-desc" id="bc-desc">Your booking is confirmed. SMS + email confirmation sent automatically. Reminder in 24 hours.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="demo-info">
+          <h3>Automated Booking System</h3>
+          <p>Customers book themselves — 24/7. No phone tag. No back-and-forth. Confirmed appointments flow directly onto your calendar.</p>
+          <div class="feat-list">
+            <div class="feat"><div class="feat-ico">🔄</div><div><strong>Real-Time Availability</strong><span>Connected to your calendar. Customers only see times you're actually free.</span></div></div>
+            <div class="feat"><div class="feat-ico">📱</div><div><strong>Auto Confirmations</strong><span>SMS + email confirmations sent instantly. Reminders sent 24 hours before.</span></div></div>
+            <div class="feat"><div class="feat-ico">🚫</div><div><strong>Reduces No-Shows 40%</strong><span>Automated reminders dramatically cut no-shows and late cancellations.</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOLLOW-UP DEMO -->
+    <div class="dpanel" id="dp-followup">
+      <div class="demo-2col">
+        <div>
+          <div class="fu-split">
+            <div class="fu-timeline-box">
+              <div class="fut-title">Automated Follow-Up Sequence</div>
+              <div class="timeline">
+                <div class="tl-item done"><div class="tl-dot">✓</div><div class="tl-time">Immediately</div><div class="tl-label">Initial Contact</div><div class="tl-prev">Auto SMS: "Hi [Name], thanks for reaching out! Here's your quote..."</div><span class="tl-badge d">Sent</span></div>
+                <div class="tl-item active"><div class="tl-dot">📱</div><div class="tl-time">2 Hours Later</div><div class="tl-label">Follow-Up Text</div><div class="tl-prev">"Just checking in — any questions about your quote? We can get you scheduled this week!"</div><span class="tl-badge a">Sending Now</span></div>
+                <div class="tl-item"><div class="tl-dot">📧</div><div class="tl-time">Day 2</div><div class="tl-label">Email Follow-Up</div><div class="tl-prev">Branded email with service details, testimonials, and easy booking link.</div><span class="tl-badge p">Scheduled</span></div>
+                <div class="tl-item"><div class="tl-dot">📱</div><div class="tl-time">Day 5</div><div class="tl-label">Re-engagement SMS</div><div class="tl-prev">"Still interested? We're booking out fast this week — want to lock in your spot?"</div><span class="tl-badge p">Scheduled</span></div>
+                <div class="tl-item"><div class="tl-dot">📋</div><div class="tl-time">Day 7</div><div class="tl-label">Owner Task Created</div><div class="tl-prev">System creates a manual follow-up task for you in your CRM.</div><span class="tl-badge p">Queued</span></div>
+              </div>
+            </div>
+            <div class="fu-preview-box">
+              <div class="fup-title">Preview Message</div>
+              <div class="sms-phone">
+                <div class="sms-bubble" id="fu-preview-msg">Hi <strong>Sarah</strong> 👋 We just missed your call! We'd hate for you to miss out — we have openings <strong>this Saturday at 9am and 11am</strong>. Want to lock in a spot? Reply YES or book here: <strong>[booking link]</strong></div>
+              </div>
+              <div class="fu-btns">
+                <div class="fu-tab on" onclick="setFU('missed',this)">Missed Call</div>
+                <div class="fu-tab" onclick="setFU('quote',this)">Quote Sent</div>
+                <div class="fu-tab" onclick="setFU('booked',this)">Post-Service</div>
+                <div class="fu-tab" onclick="setFU('reminder',this)">Reminder</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="demo-info">
+          <h3>Follow-Up Automation</h3>
+          <p>Most businesses lose leads because they don't follow up. Our system follows up automatically — 5, 7, 10 times — until the lead converts or opts out. All without you lifting a finger.</p>
+          <div class="feat-list">
+            <div class="feat"><div class="feat-ico">🎯</div><div><strong>Never Lose a Lead</strong><span>Every lead gets a multi-step follow-up sequence regardless of how busy you are.</span></div></div>
+            <div class="feat"><div class="feat-ico">⚡</div><div><strong>Instant First Response</strong><span>First follow-up sent within seconds. Leads contacted in 5 min are 21x more likely to convert.</span></div></div>
+            <div class="feat"><div class="feat-ico">🔄</div><div><strong>Triggered Sequences</strong><span>Different sequences for: missed calls, quote requests, reminders, post-service reviews.</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- REVIEW DEMO -->
+    <div class="dpanel" id="dp-review">
+      <div class="demo-2col">
+        <div>
+          <div class="review-demo-split">
+            <div class="rev-flow-box">
+              <div class="rev-stats-row">
+                <div class="rev-stat"><div class="rev-stat-n">4.9★</div><div class="rev-stat-l">Rating</div></div>
+                <div class="rev-stat"><div class="rev-stat-n">127</div><div class="rev-stat-l">Reviews</div></div>
+                <div class="rev-stat"><div class="rev-stat-n">+18</div><div class="rev-stat-l">This Month</div></div>
+              </div>
+              <div class="rev-list">
+                <div class="rev-card pub"><div class="rev-stars">⭐⭐⭐⭐⭐</div><div class="rev-text">"Best detailing experience I've ever had. My car looks brand new. Will definitely be back!"</div><div class="rev-meta"><span class="rev-name">— Michael T.</span><span class="rev-tag pub">Auto-Requested → Published</span></div></div>
+                <div class="rev-card pub"><div class="rev-stars">⭐⭐⭐⭐⭐</div><div class="rev-text">"Booked online super easy, they showed up on time, great communication throughout."</div><div class="rev-meta"><span class="rev-name">— Jessica R.</span><span class="rev-tag pub">Auto-Requested → Google</span></div></div>
+                <div class="rev-card priv"><div class="rev-stars">⭐⭐</div><div class="rev-text">"Had some issues with scheduling. Team was responsive but took longer than expected."</div><div class="rev-meta"><span class="rev-name">— Dave K.</span><span class="rev-tag priv">Filtered → Private Only</span></div></div>
+              </div>
+            </div>
+            <div class="rev-interactive">
+              <div class="ri-title">Experience the Review Flow</div>
+              <div class="rev-steps-bar">
+                <div class="rfs active" id="rfs1"></div>
+                <div class="rfs" id="rfs2"></div>
+                <div class="rfs" id="rfs3"></div>
+              </div>
+              <div class="rscr on" id="rscr1">
+                <div style="font-size:13px;color:var(--t3);margin-bottom:12px">After your service, customers receive an auto-text asking how it went:</div>
+                <div style="background:var(--bg3);border:1px solid var(--b1);padding:16px;font-size:13px;color:var(--t2);margin-bottom:16px">📱 "Hi Sarah! How was your detail today? Tap below to rate your experience."</div>
+                <div style="font-size:13px;font-weight:700;color:var(--t3);margin-bottom:8px;text-align:center">How was your experience?</div>
+                <div class="rev-stars-row" id="star-row" onclick="handleStarClick(event)">
+                  <span class="star" data-v="1">★</span>
+                  <span class="star" data-v="2">★</span>
+                  <span class="star" data-v="3">★</span>
+                  <span class="star" data-v="4">★</span>
+                  <span class="star" data-v="5">★</span>
+                </div>
+                <button class="btn-next" id="rev-next-btn" style="width:100%;margin-top:8px" onclick="revStep(2)" disabled>Continue →</button>
+              </div>
+              <div class="rscr" id="rscr2">
+                <div id="rev-step2-content"></div>
+              </div>
+              <div class="rscr" id="rscr3">
+                <div style="text-align:center;padding:20px 0">
+                  <div style="font-size:36px;margin-bottom:12px" id="rev-final-ico">✅</div>
+                  <div style="font-size:16px;font-weight:800;margin-bottom:8px" id="rev-final-title">Review Published!</div>
+                  <div style="font-size:13px;color:var(--t3);line-height:1.65" id="rev-final-desc">Thank you! Your 5-star review has been automatically posted to Google. This helps future customers find and trust this business.</div>
+                  <button class="btn-ghost" style="margin-top:16px;font-size:12px;padding:10px 20px" onclick="revStep(1)">Try Again</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="demo-info">
+          <h3>Review & Reputation Automation</h3>
+          <p>Automatically request reviews after every job. Positive reviews go to Google. Negative feedback is captured privately before it goes public. Your reputation grows on autopilot.</p>
+          <div class="feat-list">
+            <div class="feat"><div class="feat-ico">⭐</div><div><strong>Auto Review Requests</strong><span>Every completed job triggers a review request automatically via SMS.</span></div></div>
+            <div class="feat"><div class="feat-ico">🛡️</div><div><strong>Negative Review Filtering</strong><span>1-3 star reviews are captured privately so you can address them before they go public.</span></div></div>
+            <div class="feat"><div class="feat-ico">📈</div><div><strong>Google Rankings Improve</strong><span>More reviews = higher Google Maps placement = more inbound calls.</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SOCIAL DM DEMO -->
+    <div class="dpanel" id="dp-social">
+      <div class="demo-2col">
+        <div>
+          <div class="soc-shell">
+            <div class="soc-threads">
+              <div class="soc-thread-head">Instagram DMs</div>
+              <div class="dm-thread active" onclick="showDM('jessica',this)"><div class="dm-av">J</div><div class="dm-info"><div class="dm-name">jessica_m</div><div class="dm-prev">How much for a sedan?</div></div><div class="dm-time">8s</div></div>
+              <div class="dm-thread" onclick="showDM('carlos',this)"><div class="dm-av">C</div><div class="dm-info"><div class="dm-name">carlos_boston</div><div class="dm-prev">Do you come to Revere?</div></div><div class="dm-time">2m</div></div>
+              <div class="dm-thread" onclick="showDM('mike',this)"><div class="dm-av">M</div><div class="dm-info"><div class="dm-name">mikeT_detail</div><div class="dm-prev">Earliest available?</div></div><div class="dm-time">15m</div></div>
+              <div class="dm-thread" onclick="showDM('lisa',this)"><div class="dm-av">L</div><div class="dm-info"><div class="dm-name">lisa_cars</div><div class="dm-prev">$99 special still on?</div></div><div class="dm-time">1h</div></div>
+            </div>
+            <div class="soc-chat">
+              <div class="soc-chat-head">
+                <div><div class="soc-chat-name" id="soc-chat-name">jessica_m</div><div class="soc-chat-st">Auto-replied in 8 seconds ⚡</div></div>
+              </div>
+              <div class="sc-msgs" id="soc-msgs">
+                <div class="sc-msg in">Hi! How much for a full detail on a mid-size sedan?</div>
+                <div class="sc-msg out">Hey Jessica! 👋 For a full interior + exterior detail on a sedan, we're at $149. Includes hand wash, clay bar, interior vacuum, leather wipe-down, and window clean. Want to book?</div>
+                <div class="sc-auto-note">⚡ Auto-replied in 8 seconds</div>
+              </div>
+              <div class="soc-btns">
+                <div class="soc-btn" onclick="addSocMsg('book')">Send Booking Link</div>
+                <div class="soc-btn" onclick="addSocMsg('price')">Send Price Menu</div>
+                <div class="soc-btn" onclick="addSocMsg('capture')">Capture Lead Info</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="demo-info">
+          <h3>Social DM Automation</h3>
+          <p>When a customer DMs on Instagram or Facebook, they get an instant, personalized response — day or night. No more unanswered messages, lost leads, or slow response times on social.</p>
+          <div class="feat-list">
+            <div class="feat"><div class="feat-ico">⚡</div><div><strong>Instant Auto-Reply</strong><span>Every DM gets answered in seconds. No more leaving leads waiting 8 hours for a response.</span></div></div>
+            <div class="feat"><div class="feat-ico">📋</div><div><strong>Lead Capture</strong><span>AI collects name, phone, and service interest — adds them to your CRM pipeline automatically.</span></div></div>
+            <div class="feat"><div class="feat-ico">📅</div><div><strong>Books From DMs</strong><span>Sends your booking link and closes the job before you even see the message.</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CRM DEMO -->
+    <div class="dpanel" id="dp-crm">
+      <div>
+        <div class="crm-board">
+          <div class="crm-col">
+            <div class="crm-col-head"><span class="crm-col-name">New Leads</span><span class="crm-col-ct">4</span></div>
+            <div class="crm-cards">
+              <div class="crm-card"><div class="crm-card-name">Jake R.</div><div class="crm-card-niche">Auto Detailing</div><div class="crm-card-val">$320 est.</div><div class="crm-card-src">Instagram DM</div></div>
+              <div class="crm-card"><div class="crm-card-name">Maria L.</div><div class="crm-card-niche">House Cleaning</div><div class="crm-card-val">$180/mo</div><div class="crm-card-src">Website Form</div></div>
+              <div class="crm-card"><div class="crm-card-name">Tom B.</div><div class="crm-card-niche">Pressure Wash</div><div class="crm-card-val">$450 est.</div><div class="crm-card-src">Missed Call</div></div>
+              <div class="crm-card"><div class="crm-card-name">Amy K.</div><div class="crm-card-niche">Lawn Care</div><div class="crm-card-val">$120/mo</div><div class="crm-card-src">Google</div></div>
+            </div>
+          </div>
+          <div class="crm-col">
+            <div class="crm-col-head"><span class="crm-col-name">Contacted</span><span class="crm-col-ct">3</span></div>
+            <div class="crm-cards">
+              <div class="crm-card"><div class="crm-card-name">Carlos M.</div><div class="crm-card-niche">HVAC Service</div><div class="crm-card-val">$890 est.</div><div class="crm-card-src">Phone Call</div></div>
+              <div class="crm-card"><div class="crm-card-name">Sarah W.</div><div class="crm-card-niche">Auto Detailing</div><div class="crm-card-val">$199 est.</div><div class="crm-card-src">Facebook DM</div></div>
+              <div class="crm-card"><div class="crm-card-name">Dan F.</div><div class="crm-card-niche">Landscaping</div><div class="crm-card-val">$2,400/yr</div><div class="crm-card-src">Referral</div></div>
+            </div>
+          </div>
+          <div class="crm-col">
+            <div class="crm-col-head"><span class="crm-col-name">Quote Sent</span><span class="crm-col-ct">2</span></div>
+            <div class="crm-cards">
+              <div class="crm-card"><div class="crm-card-name">Lisa P.</div><div class="crm-card-niche">Window Clean</div><div class="crm-card-val">$280 est.</div><div class="crm-card-src">Website Chat</div></div>
+              <div class="crm-card"><div class="crm-card-name">Kevin J.</div><div class="crm-card-niche">Roofing</div><div class="crm-card-val">$8,500 est.</div><div class="crm-card-src">Google Ads</div></div>
+            </div>
+          </div>
+          <div class="crm-col">
+            <div class="crm-col-head"><span class="crm-col-name">Booked ✓</span><span class="crm-col-ct">5</span></div>
+            <div class="crm-cards">
+              <div class="crm-card" style="border-color:rgba(16,185,129,.25)"><div class="crm-card-name">Mike T.</div><div class="crm-card-niche">Auto Detailing</div><div class="crm-card-val" style="color:var(--green3)">$399 ✓</div><div class="crm-card-src">AI Chat</div></div>
+              <div class="crm-card" style="border-color:rgba(16,185,129,.25)"><div class="crm-card-name">Rachel S.</div><div class="crm-card-niche">Cleaning</div><div class="crm-card-val" style="color:var(--green3)">$160/mo ✓</div><div class="crm-card-src">Online Book</div></div>
+              <div class="crm-card" style="border-color:rgba(16,185,129,.25)"><div class="crm-card-name">Brian C.</div><div class="crm-card-niche">HVAC</div><div class="crm-card-val" style="color:var(--green3)">$1,200 ✓</div><div class="crm-card-src">Receptionist</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="crm-stats-row">
+          <div class="crm-stat"><div class="crm-stat-n">14</div><div class="crm-stat-l">Total Active Leads</div></div>
+          <div class="crm-stat"><div class="crm-stat-n">$4,820</div><div class="crm-stat-l">Pipeline Value</div></div>
+          <div class="crm-stat"><div class="crm-stat-n">36%</div><div class="crm-stat-l">Close Rate</div></div>
+          <div class="crm-stat"><div class="crm-stat-n">2.4 days</div><div class="crm-stat-l">Avg. Time to Close</div></div>
+        </div>
+      </div>
+      <div class="demo-info" style="margin-top:24px">
+        <h3>CRM & Lead Pipeline</h3>
+        <p>Every lead tracked, every stage visible, every deal moving. No more leads falling through cracks — you have full visibility into your entire pipeline at all times.</p>
+        <div class="feat-list" style="display:grid;grid-template-columns:1fr 1fr;gap:9px">
+          <div class="feat"><div class="feat-ico">📊</div><div><strong>Full Pipeline Visibility</strong><span>See every lead's stage and value in one dashboard.</span></div></div>
+          <div class="feat"><div class="feat-ico">🏷️</div><div><strong>Auto Lead Source Tagging</strong><span>Know exactly which channels drive your best customers.</span></div></div>
+          <div class="feat"><div class="feat-ico">🔔</div><div><strong>Task & Alert System</strong><span>Automated follow-up reminders so nothing slips through.</span></div></div>
+          <div class="feat"><div class="feat-ico">📈</div><div><strong>Revenue Forecasting</strong><span>Know your expected monthly revenue based on your pipeline.</span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WEBSITE DEMO -->
+    <div class="dpanel" id="dp-website">
+      <div class="demo-2col">
+        <div>
+          <div class="website-compare">
+            <div class="ws-card">
+              <div class="ws-label bad">❌ Typical Service Business Site</div>
+              <div class="ws-mock">
+                <div class="ws-mock-header"><div class="ws-mock-dot" style="background:#ef4444"></div><div class="ws-mock-dot" style="background:#f59e0b"></div><div class="ws-mock-dot" style="background:#10b981"></div><div class="ws-mock-bar"></div></div>
+                <div class="ws-mock-body">
+                  <div class="ws-mock-hero">Loads in 5.2 sec · Mobile Broken</div>
+                  <div class="ws-mock-cta">Contact Us (No CTA)</div>
+                  <div class="ws-mock-row"><div class="ws-mock-block">No Photos</div><div class="ws-mock-block">No Reviews</div></div>
+                  <div class="ws-mock-block" style="height:30px">No Chat · No Booking · No Follow-Up</div>
+                </div>
+              </div>
+              <div class="ws-issues">
+                <div class="ws-issue bad"><span class="ico">✗</span>No online booking anywhere</div>
+                <div class="ws-issue bad"><span class="ico">✗</span>No clear call-to-action above fold</div>
+                <div class="ws-issue bad"><span class="ico">✗</span>Not optimized for mobile</div>
+                <div class="ws-issue bad"><span class="ico">✗</span>No reviews or social proof</div>
+                <div class="ws-issue bad"><span class="ico">✗</span>No AI chat widget</div>
+                <div class="ws-issue bad"><span class="ico">✗</span>Loads in 5+ seconds</div>
+              </div>
+            </div>
+            <div class="ws-card">
+              <div class="ws-label good">✅ Atlas Growth Website</div>
+              <div class="ws-mock">
+                <div class="ws-mock-header"><div class="ws-mock-dot" style="background:#ef4444"></div><div class="ws-mock-dot" style="background:#f59e0b"></div><div class="ws-mock-dot" style="background:#10b981"></div><div class="ws-mock-bar" style="background:rgba(37,99,235,.3)"></div></div>
+                <div class="ws-mock-body">
+                  <div class="ws-mock-hero good-hero">Loads in 0.8s · Mobile-First · AI Chat Live</div>
+                  <div class="ws-mock-cta good-cta">Book Now — Instant Confirmation</div>
+                  <div class="ws-mock-row"><div class="ws-mock-block good-block">Portfolio</div><div class="ws-mock-block good-block">127 Reviews ⭐</div></div>
+                  <div class="ws-mock-block good-block" style="height:30px">AI Chat · Auto Follow-Up · CRM Connected</div>
+                </div>
+              </div>
+              <div class="ws-issues">
+                <div class="ws-issue good"><span class="ico">✓</span>Instant online booking, calendar-connected</div>
+                <div class="ws-issue good"><span class="ico">✓</span>Clear "Book Now" CTA above the fold</div>
+                <div class="ws-issue good"><span class="ico">✓</span>Mobile-first, responsive design</div>
+                <div class="ws-issue good"><span class="ico">✓</span>Reviews, portfolio, and trust signals</div>
+                <div class="ws-issue good"><span class="ico">✓</span>Live AI chat captures leads 24/7</div>
+                <div class="ws-issue good"><span class="ico">✓</span>Loads in under 1 second</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="demo-info">
+          <h3>High-Converting Website</h3>
+          <p>Your website is your 24/7 salesperson. We build sites that are fast, mobile-first, and designed with one goal: turning visitors into booked jobs — automatically.</p>
+          <div class="feat-list">
+            <div class="feat"><div class="feat-ico">⚡</div><div><strong>Built to Convert</strong><span>Every element designed to guide visitors toward booking a job, not just reading.</span></div></div>
+            <div class="feat"><div class="feat-ico">📱</div><div><strong>Mobile-First Design</strong><span>70%+ of your visitors are on mobile. We build for them first.</span></div></div>
+            <div class="feat"><div class="feat-ico">🔗</div><div><strong>Full System Integration</strong><span>Booking, AI chat, follow-up, CRM — all connected into one revenue machine.</span></div></div>
+            <div class="feat"><div class="feat-ico">🌟</div><div><strong>Trust Signals Built In</strong><span>Reviews, portfolio, certifications, and social proof displayed prominently.</span></div></div>
+          </div>
+          <button class="btn-primary" style="margin-top:20px;font-size:13px;padding:12px 24px" onclick="window.open('https://atlasgrowthweb.com','_blank')">View Live Example →</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROOF -->
+<section id="proof">
+  <div class="w">
+    <div class="s-eye">Results</div>
+    <h2 class="s-h">What happens after <em>Atlas Growth installs</em></h2>
+    <p class="s-p">Early results from our first client — Executive Car Care Boston. Systems went live within 2 weeks.</p>
+    <div class="proof-grid">
+      <div class="proof-card">
+        <div class="proof-client">Executive Car Care Boston · Auto Detailing</div>
+        <div class="proof-quote">"We went from missing 30% of our calls to having every single one answered. Bookings are up and I don't have to manage any of it."</div>
+        <div class="proof-stats">
+          <div class="pstat"><div class="pstat-n">0</div><div class="pstat-l">Missed Calls</div></div>
+          <div class="pstat"><div class="pstat-n">24/7</div><div class="pstat-l">AI Answering</div></div>
+          <div class="pstat"><div class="pstat-n">+31%</div><div class="pstat-l">Bookings</div></div>
+        </div>
+      </div>
+      <div class="proof-card">
+        <div class="proof-client">Atlas Growth · System Stats</div>
+        <div class="proof-quote">"The follow-up automation alone recovered two jobs in the first week that would have gone cold. The system pays for itself immediately."</div>
+        <div class="proof-stats">
+          <div class="pstat"><div class="pstat-n">14</div><div class="pstat-l">Days to Live</div></div>
+          <div class="pstat"><div class="pstat-n">$800</div><div class="pstat-l">First Month ROI</div></div>
+          <div class="pstat"><div class="pstat-n">100%</div><div class="pstat-l">Uptime</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FLOATING CHAT -->
+<button id="float-btn" onclick="toggleFloat()">
+  💬
+  <div id="float-notif">1</div>
+</button>
+<div id="float-popup">
+  <div class="fp-head">
+    <div class="fp-head-l">
+      <div class="fp-av">A</div>
+      <div><div class="fp-name">Atlas Growth AI</div><div class="fp-st">Online · Responds instantly</div></div>
+    </div>
+    <button class="fp-close" onclick="toggleFloat()">×</button>
+  </div>
+  <div class="fp-msgs" id="float-msgs">
+    <div class="fp-msg b">👋 Hey! I'm the Atlas Growth AI assistant. Ask me anything — services, pricing, how it works, or how we can help your business.</div>
+  </div>
+  <div class="fp-in-row">
+    <textarea class="fp-in" id="float-in" placeholder="Ask a question..." rows="1" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendFloat()}"></textarea>
+    <button class="fp-send" onclick="sendFloat()">↑</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="w">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">Atlas<span>Growth</span> — AI Revenue Infrastructure</div>
+        <div style="font-size:11px;color:var(--t5);margin-top:4px">Serving service businesses across the US</div>
+      </div>
+      <div class="footer-links">
+        <a href="https://atlasgrowthweb.com" target="_blank">Website</a>
+        <a href="https://www.instagram.com/atlasgrowthautomations/" target="_blank">Instagram</a>
+        <a href="https://api.leadconnectorhq.com/widget/booking/WwQ9yUoNHxKqPAljkFEv" target="_blank">Book a Call</a>
+      </div>
+      <div class="footer-copy">© 2026 Atlas Growth · Beverly, MA</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ═══════════════════════════════════════════════
+   ATLAS GROWTH V4 — FULL JAVASCRIPT ENGINE
+═══════════════════════════════════════════════ */
+
+// ── API ──
+async function callClaude(systemPrompt, userMessage, maxTokens = 700) {
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: maxTokens,
+        system: systemPrompt,
+        messages: [{ role: 'user', content: userMessage }]
+      })
+    });
+    const data = await res.json();
+    return data.content?.[0]?.text || null;
+  } catch(e) { return null; }
+}
+
+// ── CALCULATOR ──
+function updateCalc() {
+  const leads = +document.getElementById('sl-leads').value;
+  const job = +document.getElementById('sl-job').value;
+  const missed = +document.getElementById('sl-missed').value;
+  const close = +document.getElementById('sl-close').value;
+  document.getElementById('sv-leads').textContent = leads;
+  document.getElementById('sv-job').textContent = '$' + job.toLocaleString();
+  document.getElementById('sv-missed').textContent = missed;
+  document.getElementById('sv-close').textContent = close + '%';
+  const lostAnnual = missed * (close / 100) * job * 12;
+  const recovered = lostAnnual * 0.72;
+  const improvedClose = Math.min(close + 18, 85);
+  document.getElementById('r-lost').textContent = '$' + Math.round(lostAnnual).toLocaleString();
+  document.getElementById('r-recover').textContent = '$' + Math.round(recovered).toLocaleString();
+  document.getElementById('r-close').textContent = improvedClose + '%';
+  const insight = document.getElementById('calc-insight');
+  if (lostAnnual > 0) {
+    const monthly = Math.round(lostAnnual / 12);
+    insight.innerHTML = `At <strong>${missed} missed calls/month</strong> and <strong>$${job} average job value</strong>, you're losing an estimated <strong>$${monthly.toLocaleString()}/month</strong> ($${Math.round(lostAnnual).toLocaleString()}/year) in missed revenue. With AI automation, we can realistically recover <strong>$${Math.round(recovered/12).toLocaleString()}/month</strong> of that — more than enough to cover the system cost from day one.`;
+  } else {
+    insight.innerHTML = 'Adjust the sliders above to see your personalized revenue analysis.';
+  }
+}
+updateCalc();
+
+// ── ASSESSMENT FORM ──
+const formData = {};
+let currentStep = 1;
+
+function goStep(n) {
+  document.getElementById('step-' + currentStep)?.classList.remove('on');
+  currentStep = n;
+  document.getElementById('step-' + n)?.classList.add('on');
+  const pct = Math.round(((n - 1) / 8) * 100);
+  document.getElementById('prog-fill').style.width = pct + '%';
+  document.getElementById('prog-pct').textContent = pct + '%';
+  document.getElementById('prog-label').textContent = 'Step ' + n + ' of 8';
+  document.getElementById('assessment').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function validateStep(n) {
+  if (n === 1) {
+    const ok = document.getElementById('biz-name').value.trim() &&
+               document.getElementById('biz-type').value &&
+               document.getElementById('biz-city').value.trim() &&
+               document.getElementById('biz-size').value;
+    document.getElementById('next-1').disabled = !ok;
+  } else if (n === 8) {
+    const ok = document.getElementById('contact-name').value.trim() &&
+               document.getElementById('contact-phone').value.trim() &&
+               document.getElementById('contact-email').value.trim();
+    document.getElementById('next-8').disabled = !ok;
+  }
+}
+
+function selectOpt(el, key, val) {
+  el.closest('.opts').querySelectorAll('.opt').forEach(o => o.classList.remove('sel'));
+  el.classList.add('sel');
+  formData[key] = val;
+  const stepMap = { rev: 2, calls: 3, booking: 4, followup: 5, reviews: 6 };
+  const s = stepMap[key];
+  if (s) document.getElementById('next-' + s).disabled = false;
+}
+
+function selectScale(el, key, val) {
+  el.closest('.scale-row').querySelectorAll('.s-btn').forEach(b => b.classList.remove('sel'));
+  el.classList.add('sel');
+  formData[key] = val;
+  const stepMap = { website: 7 };
+  const s = stepMap[key];
+  if (s) document.getElementById('next-' + s).disabled = false;
+}
+
+// ── REPORT GENERATION ──
+async function generateReport() {
+  formData.bizName = document.getElementById('biz-name').value.trim();
+  formData.bizType = document.getElementById('biz-type').value;
+  formData.city = document.getElementById('biz-city').value.trim();
+  formData.size = document.getElementById('biz-size').value;
+  formData.contactName = document.getElementById('contact-name').value.trim();
+
+  document.getElementById('assessment').style.display = 'none';
+  const rep = document.getElementById('report-section');
+  rep.classList.add('show');
+  rep.scrollIntoView({ behavior: 'smooth' });
+
+  // Animate loading steps
+  const steps = ['rls1','rls2','rls3','rls4','rls5','rls6'];
+  for (let i = 0; i < steps.length; i++) {
+    await new Promise(r => setTimeout(r, 600));
+    if (i > 0) {
+      const prev = document.getElementById(steps[i-1]);
+      prev.classList.remove('active'); prev.classList.add('done');
+      prev.querySelector('.rls-ico').textContent = '✓';
+    }
+    const cur = document.getElementById(steps[i]);
+    cur.classList.add('active');
+    cur.querySelector('.rls-ico').innerHTML = '<div class="rls-spin"></div>';
+  }
+  await new Promise(r => setTimeout(r, 700));
+  document.getElementById(steps[steps.length-1]).classList.remove('active');
+  document.getElementById(steps[steps.length-1]).classList.add('done');
+  document.getElementById(steps[steps.length-1]).querySelector('.rls-ico').textContent = '✓';
+
+  // Calculate score
+  let score = 100;
+  const leaks = [];
+  let totalLeak = 0;
+
+  if (formData.calls === 'often' || formData.calls === 'always') {
+    score -= 22; const v = formData.calls === 'always' ? 3800 : 2100;
+    totalLeak += v;
+    leaks.push({ ico: '📵', name: 'Missed Calls', desc: 'Calls going unanswered, sent to voicemail', val: v });
+  } else if (formData.calls === 'sometimes') {
+    score -= 10; const v = 900;
+    totalLeak += v;
+    leaks.push({ ico: '📵', name: 'Missed Calls (Occasional)', desc: 'Calls missed during peak hours', val: v });
+  }
+
+  if (formData.booking === 'callonly' || formData.booking === 'social') {
+    score -= 18; const v = formData.booking === 'callonly' ? 1800 : 1400;
+    totalLeak += v;
+    leaks.push({ ico: '📅', name: 'No Online Booking', desc: '40% of customers leave if they can\'t book instantly', val: v });
+  } else if (formData.booking === 'form') {
+    score -= 8; const v = 700;
+    totalLeak += v;
+    leaks.push({ ico: '📅', name: 'Booking Friction (Form)', desc: 'Phone tag after form submission loses leads', val: v });
+  }
+
+  if (formData.followup === 'none') {
+    score -= 16; const v = 2200;
+    totalLeak += v;
+    leaks.push({ ico: '🔁', name: 'No Follow-Up System', desc: '80% of sales need 5+ touchpoints. You\'re doing zero.', val: v });
+  } else if (formData.followup === 'manual') {
+    score -= 8; const v = 900;
+    totalLeak += v;
+    leaks.push({ ico: '🔁', name: 'Inconsistent Follow-Up', desc: 'Manual follow-up misses too many leads', val: v });
+  }
+
+  if (formData.reviews === '0-10') {
+    score -= 14; const v = 1600;
+    totalLeak += v;
+    leaks.push({ ico: '⭐', name: 'Critically Low Reviews', desc: 'Businesses with under 10 reviews lose 60%+ of search clicks', val: v });
+  } else if (formData.reviews === '10-30') {
+    score -= 8; const v = 800;
+    totalLeak += v;
+    leaks.push({ ico: '⭐', name: 'Below Average Review Count', desc: 'Competitors with more reviews are winning your customers', val: v });
+  }
+
+  const wsScore = formData.website || 5;
+  if (wsScore <= 3) {
+    score -= 18; const v = 2400;
+    totalLeak += v;
+    leaks.push({ ico: '🌐', name: 'Weak / No Website', desc: '75% of customers judge credibility by website quality', val: v });
+  } else if (wsScore <= 6) {
+    score -= 10; const v = 1100;
+    totalLeak += v;
+    leaks.push({ ico: '🌐', name: 'Website Not Converting', desc: 'Your site exists but doesn\'t capture leads effectively', val: v });
+  }
+
+  score = Math.max(score, 10);
+
+  // Bars data
+  const bars = [
+    { name: 'Missed Call Handling', score: formData.calls === 'rarely' ? 90 : formData.calls === 'sometimes' ? 55 : 15 },
+    { name: 'Online Booking System', score: formData.booking === 'auto' ? 95 : formData.booking === 'form' ? 60 : 20 },
+    { name: 'Follow-Up Automation', score: formData.followup === 'automated' ? 92 : formData.followup === 'manual' ? 45 : 10 },
+    { name: 'Reviews & Reputation', score: formData.reviews === '75+' ? 88 : formData.reviews === '30-75' ? 65 : formData.reviews === '10-30' ? 40 : 15 },
+    { name: 'Website Quality', score: Math.round((wsScore / 10) * 100) },
+    { name: 'AI Chat & Lead Capture', score: 20 },
+    { name: 'Social DM Response', score: 25 },
+  ];
+
+  // Render report
+  document.getElementById('report-loading').style.display = 'none';
+  document.getElementById('report-content').style.display = 'block';
+
+  document.getElementById('rep-biz-name').textContent = formData.bizName || 'Your Business';
+  document.getElementById('rep-meta').textContent = `${formData.bizType || 'Service Business'} · ${formData.city || 'Your Area'} · ${formData.size || ''} · Report generated ${new Date().toLocaleDateString('en-US', {month:'long',day:'numeric',year:'numeric'})}`;
+
+  // Score animation
+  const arc = document.getElementById('score-arc');
+  const numEl = document.getElementById('score-num');
+  const circumference = 264;
+  const offset = circumference - (score / 100) * circumference;
+  const color = score >= 65 ? '#10b981' : score >= 40 ? '#f59e0b' : '#ef4444';
+  arc.style.stroke = color;
+  setTimeout(() => {
+    arc.style.strokeDashoffset = offset;
+    let n = 0;
+    const timer = setInterval(() => {
+      n = Math.min(n + 2, score);
+      numEl.textContent = n;
+      if (n >= score) clearInterval(timer);
+    }, 20);
+  }, 300);
+
+  const grade = score >= 65 ? 'Good Foundation' : score >= 40 ? 'Needs Work' : 'Critical — Action Required';
+  const gradeClass = score >= 65 ? 'grade-good' : score >= 40 ? 'grade-warn' : 'grade-crit';
+  const headline = score >= 65 ? 'Your systems are partially in place, but gaps are still costing you.' : score >= 40 ? 'Significant revenue leaks identified. Multiple systems missing.' : 'Major revenue gaps found. Every week without this system costs you.';
+  document.getElementById('grade-badge').textContent = grade;
+  document.getElementById('grade-badge').className = 'grade-badge ' + gradeClass;
+  document.getElementById('score-headline').textContent = headline;
+  document.getElementById('score-subline').textContent = `Revenue system score for ${formData.bizName || 'your business'}: ${score}/100`;
+
+  // Bars
+  const barHTML = bars.map(b => {
+    const c = b.score >= 65 ? '#10b981' : b.score >= 40 ? '#f59e0b' : '#ef4444';
+    return `<div class="bar-item">
+      <div class="bar-label"><span class="bar-name">${b.name}</span><span class="bar-pct" style="color:${c}">${b.score}/100</span></div>
+      <div class="bar-track"><div class="bar-fill" id="bar-${b.name.replace(/\s/g,'')}" style="width:0%;background:${c};transition:width 1s ease" data-w="${b.score}%"></div></div>
+    </div>`;
+  }).join('');
+  document.getElementById('bar-items').innerHTML = barHTML;
+  setTimeout(() => {
+    document.querySelectorAll('.bar-fill').forEach(b => b.style.width = b.dataset.w);
+  }, 400);
+
+  // Leak rows
+  if (leaks.length === 0) {
+    leaks.push({ ico: '✅', name: 'Strong Systems', desc: 'Your business appears well-systemized. Focus on optimization.', val: 0 });
+  }
+  document.getElementById('leak-rows').innerHTML = leaks.map(l => `
+    <div class="lt-row">
+      <div class="lt-ico">${l.ico}</div>
+      <div class="lt-body"><div class="lt-name">${l.name}</div><div class="lt-desc">${l.desc}</div></div>
+      <div class="lt-val">${l.val > 0 ? '-$' + l.val.toLocaleString() + '/mo' : '—'}</div>
+    </div>`).join('');
+  document.getElementById('leak-total').textContent = '-$' + totalLeak.toLocaleString() + '/mo';
+
+  // ROI
+  const system = totalLeak > 3000 ? 400 : totalLeak > 1500 ? 250 : 150;
+  const roi = totalLeak > 0 ? Math.round(totalLeak / system) : '—';
+  document.getElementById('roi-grid').innerHTML = `
+    <div class="roi-item"><div class="roi-n">$${totalLeak.toLocaleString()}</div><div class="roi-l">Monthly Revenue Lost</div></div>
+    <div class="roi-item"><div class="roi-n">$${system}/mo</div><div class="roi-l">Atlas Growth Investment</div></div>
+    <div class="roi-item"><div class="roi-n">${roi}x</div><div class="roi-l">Monthly ROI</div></div>`;
+
+  // AI generation
+  const sys = `You are an expert business revenue consultant for Atlas Growth, an AI automation company. Analyze the service business and write a personalized, insightful 3-paragraph revenue gap analysis. Be specific to their niche and situation. Use a direct, professional tone. Start with their situation, identify the top gaps, and explain what recovery looks like. Use first-person plural (we found). Bold key numbers and findings. No bullet points — flowing prose.`;
+  const userMsg = `Business: ${formData.bizName}, Type: ${formData.bizType}, City: ${formData.city}, Size: ${formData.size}, Revenue: ${formData.rev || 'unknown'}, Missed calls: ${formData.calls}, Booking: ${formData.booking}, Follow-up: ${formData.followup}, Reviews: ${formData.reviews}, Website score: ${wsScore}/10. Revenue Score: ${score}/100. Monthly revenue lost: $${totalLeak.toLocaleString()}. Write their personalized 3-paragraph analysis.`;
+
+  const planSys = `You are a senior business strategist for Atlas Growth. Write a 4-step prioritized action plan for this service business. Each step should be specific, actionable, and tailored to their niche. Format: numbered steps 1-4, each with a bold action title and 2 sentences of explanation. Include realistic timelines and expected revenue impact. Be encouraging but honest.`;
+
+  // Start both AI calls
+  const analysisEl = document.getElementById('rep-analysis-text');
+  const planEl = document.getElementById('rep-plan-text');
+  analysisEl.innerHTML = '<span style="color:var(--t4)">Generating your personalized analysis<span class="cursor-anim"></span></span>';
+  planEl.innerHTML = '<span style="color:var(--t4)">Generating your action plan<span class="cursor-anim"></span></span>';
+
+  const [analysis, plan] = await Promise.all([
+    callClaude(sys, userMsg, 800),
+    callClaude(planSys, userMsg, 800)
+  ]);
+
+  // Typewriter effect for analysis
+  const finalAnalysis = analysis || getFallbackAnalysis();
+  await typewrite(analysisEl, finalAnalysis.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>'));
+
+  // Typewriter for plan
+  const finalPlan = plan || getFallbackPlan();
+  await typewrite(planEl, finalPlan.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>'));
+
+  document.getElementById('report-content').scrollIntoView({ behavior: 'smooth' });
+}
+
+async function typewrite(el, text, speed = 8) {
+  el.innerHTML = '';
+  const words = text.split(' ');
+  let current = '';
+  for (let i = 0; i < words.length; i++) {
+    current += (i > 0 ? ' ' : '') + words[i];
+    el.innerHTML = current + '<span class="cursor-anim"></span>';
+    el.scrollIntoView && false;
+    await new Promise(r => setTimeout(r, speed));
+  }
+  el.innerHTML = current;
+}
+
+function getFallbackAnalysis() {
+  const biz = formData.bizName || 'your business';
+  const type = formData.bizType || 'service business';
+  return `After analyzing ${biz}'s revenue infrastructure, we identified several critical gaps that are costing your ${type} meaningful revenue every single month. The combination of missed call handling issues, gaps in your booking workflow, and limited follow-up automation means leads that find your business are slipping through the cracks before they ever become paying customers. This is the most common and most expensive problem we see in service businesses across the country.\n\nThe most significant opportunity for ${biz} is in speed-to-lead and booking automation. When a potential customer can't book immediately — or doesn't get a response within minutes — they move to the next business in their search results. With AI automation handling these touchpoints 24/7, your business captures and converts those leads automatically, even when you're in the middle of a job.\n\nThe good news is that these are entirely fixable problems. Our AI Revenue System installs within 14 days and immediately starts recovering the revenue you're currently losing. Most clients see a positive ROI within the first 30 days simply from recovering jobs that were previously being lost to missed calls and slow follow-up.`;
+}
+
+function getFallbackPlan() {
+  return `**Step 1: Install AI Receptionist (Week 1)** Your most immediate and highest-impact action is eliminating missed calls. We configure a custom AI voice agent for your business that answers every call 24/7, qualifies the caller, and books them directly to your calendar. For most ${formData.bizType || 'service'} businesses, this alone recovers 2–4 additional jobs in the first month.\n\n**Step 2: Launch Automated Booking System (Week 1-2)** We connect your calendar to an online booking page that lives on your website, your Google Business Profile, and your social accounts. Customers can self-schedule in under 60 seconds. Confirmation texts and reminder sequences fire automatically, reducing no-shows by up to 40%.\n\n**Step 3: Activate Follow-Up Automation (Week 2)** Every lead that doesn't book immediately gets enrolled in a multi-step SMS and email follow-up sequence. We configure 5-7 touchpoints that run automatically over 7 days. This is where most businesses see the biggest revenue recovery — leads that would have gone cold start converting.\n\n**Step 4: Deploy Review Automation + CRM (Week 2-3)** After every completed job, your system automatically requests a Google review. Positive reviews publish to your profile. Negative feedback is captured privately. Simultaneously, your CRM gives you full visibility into every lead, every stage, and exactly where your revenue is coming from. Within 30 days, you'll have a fully functioning revenue machine.`;
+}
+
+// ── DEMO TABS ──
+function switchDemo(id, tab) {
+  document.querySelectorAll('.dtab').forEach(t => t.classList.remove('on'));
+  document.querySelectorAll('.dpanel').forEach(p => p.classList.remove('on'));
+  tab.classList.add('on');
+  document.getElementById('dp-' + id).classList.add('on');
+}
+
+// ── CHAT DEMO ──
+const chatHistory = [];
+const chatSys = `You are Atlas AI, a friendly and knowledgeable business assistant for a premium auto detailing and service business. You answer questions about services, pricing, availability, and can help customers book appointments. Keep responses concise (2-3 sentences max), warm, and helpful. Use light emojis occasionally. Services include: Full Detail Sedan $149, Full Detail SUV $199, Express Wash $49, Ceramic Coating from $399. Hours: Mon-Sat 8am-6pm. Location: Greater Boston area. Booking: always direct to book online or call.`;
+
+async function sendChatMsg(msg) {
+  addMsg('chat-msgs', msg, 'u');
+  document.getElementById('chat-in').value = '';
+  showTyping('chat-msgs');
+  chatHistory.push({ role: 'user', content: msg });
+
+  let response = await callClaudeConversation(chatSys, chatHistory);
+  if (!response) response = getChatFallback(msg);
+  chatHistory.push({ role: 'assistant', content: response });
+  removeTyping('chat-msgs');
+  addMsg('chat-msgs', response, 'b');
+}
+
+async function callClaudeConversation(sys, history) {
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 200,
+        system: sys,
+        messages: history
+      })
+    });
+    const data = await res.json();
+    return data.content?.[0]?.text || null;
+  } catch(e) { return null; }
+}
+
+function sendChatFromInput() {
+  const v = document.getElementById('chat-in').value.trim();
+  if (v) sendChatMsg(v);
+}
+
+function addMsg(containerId, text, type) {
+  const c = document.getElementById(containerId);
+  const row = document.createElement('div');
+  row.className = 'mrow ' + (type === 'u' ? 'u' : 'b');
+  row.innerHTML = type === 'u'
+    ? `<div class="mbub">${text}</div><div class="mav">👤</div>`
+    : `<div class="mav">🤖</div><div class="mbub">${text}</div>`;
+  c.appendChild(row);
+  c.scrollTop = c.scrollHeight;
+}
+
+function showTyping(id) {
+  const c = document.getElementById(id);
+  const el = document.createElement('div');
+  el.className = 'typing-ind';
+  el.id = 'typing-' + id;
+  el.innerHTML = '<div class="td"></div><div class="td"></div><div class="td"></div>';
+  c.appendChild(el);
+  c.scrollTop = c.scrollHeight;
+}
+
+function removeTyping(id) {
+  document.getElementById('typing-' + id)?.remove();
+}
+
+function getChatFallback(msg) {
+  const m = msg.toLowerCase();
+  if (m.includes('price') || m.includes('cost') || m.includes('how much')) return "Here's our pricing: Express Wash $49 · Full Detail Sedan $149 · Full Detail SUV $199 · Ceramic Coating from $399 ✨ Want to book one?";
+  if (m.includes('book') || m.includes('appoint') || m.includes('schedule')) return "We have availability this week! 📅 You can book online at atlasgrowthweb.com or I can have someone call you. What service are you looking for?";
+  if (m.includes('avail') || m.includes('when') || m.includes('time')) return "We're open Mon-Sat 8am-6pm and have same-week availability right now! 🙌 What service can we help you with?";
+  if (m.includes('service') || m.includes('offer') || m.includes('what')) return "We specialize in premium auto detailing: Express Wash, Full Interior + Exterior Detail, Ceramic Coating, and Paint Correction ✨ What can we help with?";
+  return "Great question! We'd love to help. Our team is available Mon-Sat 8am-6pm. Want to book a free consultation or get a quick quote? 📞";
+}
+
+// ── PHONE DEMO ──
+let callTimer;
+function startPhoneDemo() {
+  clearInterval(callTimer);
+  let secs = 0;
+  document.getElementById('ph-timer').textContent = '0:00';
+  document.getElementById('ph-status').textContent = 'Active Call';
+  callTimer = setInterval(() => {
+    secs++;
+    const m = Math.floor(secs / 60);
+    const s = secs % 60;
+    document.getElementById('ph-timer').textContent = m + ':' + (s < 10 ? '0' : '') + s;
+    if (secs > 90) { clearInterval(callTimer); document.getElementById('ph-status').textContent = 'Call Ended'; }
+  }, 1000);
+}
+
+// ── BOOKING DEMO ──
+let calYear = 2026, calMonth = 2, selDay = null, selSlot = null;
+const bookedDays = [1,7,8,14,15,21,22,28];
+
+function renderCal() {
+  const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  document.getElementById('cal-month-label').textContent = months[calMonth] + ' ' + calYear;
+  const grid = document.getElementById('cal-grid');
+  grid.innerHTML = '';
+  ['S','M','T','W','T','F','S'].forEach(d => {
+    const el = document.createElement('div');
+    el.className = 'cal-dow'; el.textContent = d; grid.appendChild(el);
+  });
+  const first = new Date(calYear, calMonth, 1).getDay();
+  const days = new Date(calYear, calMonth + 1, 0).getDate();
+  for (let i = 0; i < first; i++) { const e = document.createElement('div'); e.className = 'cal-day e'; grid.appendChild(e); }
+  for (let d = 1; d <= days; d++) {
+    const el = document.createElement('div');
+    const isBooked = bookedDays.includes(d);
+    el.className = 'cal-day ' + (isBooked ? 'tk' : d === selDay ? 'sel' : 'av');
+    el.textContent = d;
+    if (!isBooked) el.onclick = () => selectDay(d);
+    grid.appendChild(el);
+  }
+}
+
+function selectDay(d) {
+  selDay = d; selSlot = null; renderCal();
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  document.getElementById('sel-date-label').textContent = months[calMonth] + ' ' + d + ', ' + calYear;
+  const slots = document.getElementById('slots-grid');
+  const taken = [0, 3, 5];
+  const times = ['8:00 AM','9:00 AM','10:00 AM','11:00 AM','12:00 PM','1:00 PM','2:00 PM','3:00 PM'];
+  slots.innerHTML = times.map((t, i) =>
+    `<div class="slot${taken.includes(i) ? ' tk' : ''}" onclick="${taken.includes(i) ? '' : `selectSlot(this,'${t}')`}">${t}</div>`
+  ).join('');
+  document.getElementById('book-btn').textContent = 'Select a Time';
+  document.getElementById('book-btn').disabled = true;
+  document.getElementById('book-conf').classList.remove('show');
+}
+
+function selectSlot(el, time) {
+  document.querySelectorAll('.slot').forEach(s => s.classList.remove('sel'));
+  el.classList.add('sel'); selSlot = time;
+  const btn = document.getElementById('book-btn');
+  btn.textContent = `Confirm — ${time}`;
+  btn.disabled = false;
+}
+
+function changeCalMonth(dir) {
+  calMonth += dir;
+  if (calMonth > 11) { calMonth = 0; calYear++; }
+  if (calMonth < 0) { calMonth = 11; calYear--; }
+  selDay = null; selSlot = null; renderCal();
+}
+
+function confirmBooking() {
+  if (!selSlot) return;
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  document.getElementById('bc-desc').textContent = `Booked for ${months[calMonth]} ${selDay} at ${selSlot}. Confirmation text and email sent automatically. Reminder in 24 hours.`;
+  document.getElementById('book-conf').classList.add('show');
+  document.getElementById('book-btn').style.display = 'none';
+}
+renderCal();
+
+// ── FOLLOW-UP ──
+const fuMsgs = {
+  missed: `Hi <strong>Sarah</strong> 👋 We just missed your call! We'd hate for you to miss out — we have openings <strong>this Saturday at 9am and 11am</strong>. Want to lock in a spot? Reply YES or book here: <strong>[booking link]</strong>`,
+  quote: `Hi <strong>Mike</strong> — just checking in on that quote we sent for your SUV detail ($199). We have limited availability this week. Want to grab a time? <strong>[book here]</strong>`,
+  booked: `Hi <strong>Jessica</strong> — hope your detail came out amazing! 🙌 If you have 30 seconds, a Google review means the world to us: <strong>[review link]</strong>. Thanks so much!`,
+  reminder: `Hi <strong>Tom</strong> — reminder: your detail appointment is <strong>tomorrow at 10am</strong> 📅 Reply CONFIRM to confirm or call us to reschedule. See you then!`,
+};
+function setFU(type, tab) {
+  document.querySelectorAll('.fu-tab').forEach(t => t.classList.remove('on'));
+  tab.classList.add('on');
+  document.getElementById('fu-preview-msg').innerHTML = fuMsgs[type];
+}
+
+// ── REVIEW DEMO ──
+let selectedStars = 0;
+function handleStarClick(e) {
+  const star = e.target.closest('.star');
+  if (!star) return;
+  selectedStars = parseInt(star.dataset.v);
+  document.querySelectorAll('.star').forEach((s, i) => s.classList.toggle('lit', i < selectedStars));
+  const btn = document.getElementById('rev-next-btn');
+  btn.disabled = false;
+}
+
+function revStep(n) {
+  document.querySelectorAll('.rscr').forEach(s => s.classList.remove('on'));
+  document.getElementById('rscr' + n)?.classList.add('on');
+  ['rfs1','rfs2','rfs3'].forEach((id, i) => {
+    document.getElementById(id).className = 'rfs' + (i < n - 1 ? ' done' : i === n - 1 ? ' active' : '');
+  });
+  if (n === 1) {
+    selectedStars = 0;
+    document.querySelectorAll('.star').forEach(s => s.classList.remove('lit'));
+    document.getElementById('rev-next-btn').disabled = true;
+  }
+  if (n === 2) {
+    const isGood = selectedStars >= 4;
+    document.getElementById('rscr2').innerHTML = isGood
+      ? `<div style="font-size:13px;color:var(--t3);margin-bottom:12px">Great! We're so glad you had a good experience. We're redirecting you to Google to leave a public review:</div>
+         <div style="background:rgba(16,185,129,.04);border:1px solid rgba(16,185,129,.2);padding:16px;margin-bottom:16px">
+           <div style="font-size:12px;font-weight:700;color:var(--green3);margin-bottom:4px">→ Opening Google Review Page...</div>
+           <div style="font-size:12px;color:var(--t4)">Your ${selectedStars}-star review will help future customers find this business</div>
+         </div>
+         <button class="btn-next" style="width:100%" onclick="revStep(3)">Publish My Review ✓</button>`
+      : `<div style="font-size:13px;color:var(--t3);margin-bottom:12px">We're sorry to hear that. Your feedback is sent privately to the owner to resolve. This won't be published publicly.</div>
+         <div style="background:rgba(245,158,11,.04);border:1px solid rgba(245,158,11,.2);padding:16px;margin-bottom:16px">
+           <div style="font-size:12px;font-weight:700;color:var(--gold3);margin-bottom:4px">→ Feedback Sent Privately</div>
+           <div style="font-size:12px;color:var(--t4)">The owner has been notified and will reach out to make it right</div>
+         </div>
+         <button class="btn-next" style="width:100%;background:var(--gold2)" onclick="revStep(3)">Submit Feedback</button>`;
+  }
+  if (n === 3) {
+    const isGood = selectedStars >= 4;
+    document.getElementById('rev-final-ico').textContent = isGood ? '✅' : '📬';
+    document.getElementById('rev-final-title').textContent = isGood ? 'Review Published to Google!' : 'Feedback Received — Owner Notified';
+    document.getElementById('rev-final-desc').textContent = isGood
+      ? 'Your 5-star review has been automatically published to Google. This helps the business rank higher in local search and gain more customers.'
+      : 'Your feedback has been sent directly to the owner. The negative review was filtered privately — it won\'t appear on public review sites. The owner will reach out to make it right.';
+  }
+}
+
+// ── SOCIAL DM ──
+const dmConvos = {
+  jessica: [
+    { cls: 'in', text: 'Hi! How much for a full detail on a mid-size sedan?' },
+    { cls: 'out', text: "Hey Jessica! 👋 For a full interior + exterior detail on a sedan, we're at $149. Includes hand wash, clay bar, interior vacuum, leather wipe-down, and window clean. Want to book?" },
+    { auto: true },
+  ],
+  carlos: [
+    { cls: 'in', text: 'Do you guys come to Revere?' },
+    { cls: 'out', text: 'Hey Carlos! Yes, we service Revere and all surrounding areas 🙌 What can we help you with? We have same-week availability!' },
+    { auto: true },
+  ],
+  mike: [
+    { cls: 'in', text: "When's the earliest available appointment?" },
+    { cls: 'out', text: 'Hey Mike! We have openings this Saturday at 9am and 11am, and Sunday at 10am. Want me to grab one of those for you?' },
+    { auto: true },
+  ],
+  lisa: [
+    { cls: 'in', text: 'Is the $99 express special still available?' },
+    { cls: 'out', text: "Hi Lisa! The $99 Express Detail is still available this week 🎉 Includes full exterior wash, tire shine, and window clean. Want to book it?" },
+    { auto: true },
+  ],
+};
+
+function showDM(name, el) {
+  document.querySelectorAll('.dm-thread').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('soc-chat-name').textContent = name + '_msg';
+  const msgs = document.getElementById('soc-msgs');
+  const convo = dmConvos[name] || dmConvos.jessica;
+  msgs.innerHTML = convo.map(m =>
+    m.auto
+      ? `<div class="sc-auto-note">⚡ Auto-replied in 8 seconds</div>`
+      : `<div class="sc-msg ${m.cls}">${m.text}</div>`
+  ).join('');
+}
+
+const socBtns = {
+  book: '📅 Here\'s our booking link — grab any open slot: [atlasgrowthweb.com/book] 🙌',
+  price: '💰 Our service menu:\n• Express Wash: $49\n• Full Detail (sedan): $149\n• Full Detail (SUV): $199\n• Ceramic Coating: from $399',
+  capture: 'Could I grab your name and phone number? We\'ll send you a confirmation text and lock in your appointment! 📱',
+};
+
+function addSocMsg(type) {
+  const msgs = document.getElementById('soc-msgs');
+  msgs.innerHTML += `<div class="sc-msg out">${socBtns[type]}</div><div class="sc-auto-note">⚡ Auto-sent</div>`;
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+// ── FLOATING CHAT ──
+let floatOpen = false;
+const floatHistory = [];
+const floatSys = `You are the Atlas Growth AI assistant. Atlas Growth is an AI revenue infrastructure company that installs automation systems for service businesses. You help potential clients understand our services, pricing, and how we can help their business. Keep responses friendly, concise (2-3 sentences), and focused on value. Services include: AI Chat Widget, AI Receptionist, Automated Booking, Follow-Up Automation, CRM, Review Automation, Social DM Automation, High-Converting Website. Pricing starts at $150/month. Free Business Growth Analysis available. Book at: https://api.leadconnectorhq.com/widget/booking/WwQ9yUoNHxKqPAljkFEv`;
+
+function toggleFloat() {
+  floatOpen = !floatOpen;
+  document.getElementById('float-popup').classList.toggle('open', floatOpen);
+  document.getElementById('float-notif').classList.remove('show');
+}
+
+async function sendFloat() {
+  const inp = document.getElementById('float-in');
+  const msg = inp.value.trim();
+  if (!msg) return;
+  inp.value = '';
+  addFloatMsg(msg, 'u');
+  floatHistory.push({ role: 'user', content: msg });
+  showTyping('float-msgs');
+  let reply = await callClaudeConversation(floatSys, floatHistory);
+  if (!reply) reply = getFloatFallback(msg);
+  floatHistory.push({ role: 'assistant', content: reply });
+  removeTyping('float-msgs');
+  addFloatMsg(reply, 'b');
+}
+
+function addFloatMsg(text, type) {
+  const c = document.getElementById('float-msgs');
+  const el = document.createElement('div');
+  el.className = 'fp-msg ' + type;
+  el.textContent = text;
+  c.appendChild(el);
+  c.scrollTop = c.scrollHeight;
+}
+
+function getFloatFallback(msg) {
+  const m = msg.toLowerCase();
+  if (m.includes('price') || m.includes('cost')) return "Our systems start at $150/month depending on what you need. Most clients see a 5-10x ROI in the first 30 days from recovered revenue alone. Want to book a free analysis?";
+  if (m.includes('work') || m.includes('how')) return "We install AI-powered revenue systems for service businesses — AI receptionists, automated booking, follow-up automation, CRM, review systems, and more. Everything through GoHighLevel. Setup takes about 14 days.";
+  if (m.includes('book') || m.includes('call') || m.includes('talk')) return "Absolutely! You can book a free 15-minute strategy call at atlasgrowthweb.com. No sales pressure — just a conversation about your business gaps.";
+  return "Atlas Growth installs AI revenue systems for service businesses — we handle everything from AI receptionists to review automation. What type of business do you run? I can tell you exactly how we'd help.";
+}
+
+// ── NOTIFICATIONS ──
+setTimeout(() => {
+  if (!floatOpen) document.getElementById('float-notif').classList.add('show');
+}, 8000);
+
+// ── INIT PHONE TIMER ──
+startPhoneDemo();
+</script>
+</body>
+</html>
